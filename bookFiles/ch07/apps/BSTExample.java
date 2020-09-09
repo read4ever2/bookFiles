@@ -5,19 +5,27 @@
 //--------------------------------------------------------------------------
 package ch07.apps;
 
-import ch07.trees.*;
-import java.util.Iterator; 
+import ch07.trees.BSTInterface;
+import ch07.trees.BinarySearchTree;
 
-public class BSTExample 
-{
-  public static void main(String[] args)
-  {  
+import java.util.Iterator;
+
+public class BSTExample {
+  public static void main(String[] args) {
     BinarySearchTree<Character> example = new BinarySearchTree<Character>();
     Iterator<Character> iter;
-    
-    example.add('P'); example.add('F'); example.add('S'); example.add('B'); 
-    example.add('H'); example.add('R'); example.add('Y'); example.add('G'); 
-    example.add('T'); example.add('Z'); example.add('W');  
+
+    example.add('P');
+    example.add('F');
+    example.add('S');
+    example.add('B');
+    example.add('H');
+    example.add('R');
+    example.add('Y');
+    example.add('G');
+    example.add('T');
+    example.add('Z');
+    example.add('W');
 
     // Inorder
     System.out.print("Inorder:   ");
@@ -39,13 +47,15 @@ public class BSTExample
 
     // Inorder again
     System.out.print("\nInorder:   ");
-    for (Character ch: example)
-       System.out.print(ch);
+    for (Character ch : example)
+      System.out.print(ch);
 
     // Inorder again
     System.out.print("\nInorder:   ");
     iter = example.getIterator(BSTInterface.Traversal.Inorder);
-    example.add('A'); example.add('A'); example.add('A'); 
+    example.add('A');
+    example.add('A');
+    example.add('A');
     while (iter.hasNext())
       System.out.print(iter.next());
 

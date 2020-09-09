@@ -5,12 +5,10 @@
 //----------------------------------------------------------------------------
 package ch04.queues;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class ITDArrayBoundedQueue
-{
-  public static void main(String[] args)
-  { 
+public class ITDArrayBoundedQueue {
+  public static void main(String[] args) {
     QueueInterface<String> test = new ArrayBoundedQueue<String>();
     Scanner scan = new Scanner(System.in);
 
@@ -25,34 +23,31 @@ public class ITDArrayBoundedQueue
     System.out.println("What is the name of this test?");
     String testName = scan.nextLine();
     System.out.println("\nThis is test " + testName + "\n");
-    
+
     // Handle constructor
     System.out.println("Choose a constructor:");
     System.out.println("1: ArrayBoundedQueue( )");
     System.out.println("2: ArrayBoundedQueue(int maxSize)");
     if (scan.hasNextInt())
       constructor = scan.nextInt();
-    else
-    {
+    else {
       System.out.println("Error: you must enter an integer.");
       System.out.println("Terminating test.");
       return;
     }
     skip = scan.nextLine();
 
-    switch (constructor)
-    {
+    switch (constructor) {
       case 1:
         test = new ArrayBoundedQueue<String>();
         break;
-        
+
       case 2:
         System.out.println("Enter a maximum size:");
         int maxSize;
         if (scan.hasNextInt())
           maxSize = scan.nextInt();
-        else
-        {
+        else {
           System.out.println("Error: you must enter an integer.");
           System.out.println("Terminating test.");
           return;
@@ -60,88 +55,79 @@ public class ITDArrayBoundedQueue
         skip = scan.nextLine();
         test = new ArrayBoundedQueue<String>(maxSize);
         break;
-        
+
       default:
         System.out.println("Error in constructor choice. Terminating test.");
         return;
     }
-    
+
     // Handle test cases
-    keepGoing = true;  
-    while (keepGoing)
-    {
+    keepGoing = true;
+    while (keepGoing) {
       System.out.println("\nChoose an operation:");
       System.out.println("1: enqueue(element)");
       System.out.println("2: String dequeue()");
       System.out.println("3: boolean isFull()");
       System.out.println("4: boolean isEmpty()");
-      System.out.println("5: int size()");      
+      System.out.println("5: int size()");
       System.out.println("6: stop Testing");
       if (scan.hasNextInt())
         operation = scan.nextInt();
-      else
-      {
+      else {
         System.out.println("Error: you must enter an integer.");
         System.out.println("Terminating test.");
         return;
-      } 
+      }
       skip = scan.nextLine();
 
-      switch (operation)
-      {
+      switch (operation) {
         case 1:  // enqueue
-        System.out.println("Enter string to enqueue:");
-        enqueueString = scan.nextLine();
-        System.out.println("enqueue(\"" + enqueueString + "\")");
-        try
-        { 
-          test.enqueue(enqueueString);
-        }
-        catch (QueueOverflowException QOFException)
-        {
-          System.out.println("Overflow Exception: " + QOFException.getMessage());
-        }        
-        break;
-        
-        case 2:  // dequeue
-        System.out.println("dequeue()");
-        try
-        { 
-          dequeueString = test.dequeue();
-        }
-        catch (QueueUnderflowException QUFException)
-        {
-          System.out.println("Underflow Exception: " + QUFException.getMessage());
+          System.out.println("Enter string to enqueue:");
+          enqueueString = scan.nextLine();
+          System.out.println("enqueue(\"" + enqueueString + "\")");
+          try {
+            test.enqueue(enqueueString);
+          } catch (QueueOverflowException QOFException) {
+            System.out.println("Overflow Exception: " + QOFException.getMessage());
+          }
           break;
-        }        
-        System.out.println("Result: " + dequeueString + " was returned.");
-        break;
-        
+
+        case 2:  // dequeue
+          System.out.println("dequeue()");
+          try {
+            dequeueString = test.dequeue();
+          } catch (QueueUnderflowException QUFException) {
+            System.out.println("Underflow Exception: " + QUFException.getMessage());
+            break;
+          }
+          System.out.println("Result: " + dequeueString + " was returned.");
+          break;
+
         case 3:  // isFull
-        System.out.println("isFull()");
-        System.out.println("Result: " + test.isFull());
-        break;
-        
+          System.out.println("isFull()");
+          System.out.println("Result: " + test.isFull());
+          break;
+
         case 4:  // isEmpty
-        System.out.println("isEmpty()");
-        System.out.println("Result: " + test.isEmpty());
-        break;
-        
+          System.out.println("isEmpty()");
+          System.out.println("Result: " + test.isEmpty());
+          break;
+
         case 5:  // size
-        System.out.println("size()");
-        System.out.println("Result: " + test.size());
-        break;
-        
+          System.out.println("size()");
+          System.out.println("Result: " + test.size());
+          break;
+
         case 6:  // stop testing
-        keepGoing = false;
-        break;
-        
+          keepGoing = false;
+          break;
+
         default:
-        System.out.println("Error in operation choice. Terminating test.");
-        return;
+          System.out.println("Error in operation choice. Terminating test.");
+          return;
       }
     }
 
-  System.out.println("End of Interactive Test Driver");
+    System.out.println("End of Interactive Test Driver");
   }
 }

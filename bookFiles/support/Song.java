@@ -6,41 +6,35 @@
 
 package support;
 
-import java.text.*;
+import java.text.DecimalFormat;
 
-public class Song
-{
+public class Song {
   protected String name;
   protected int duration;    // in seconds
-  
+
   DecimalFormat fmt = new DecimalFormat("00");  // to format seconds
 
-  public Song(String name, int seconds)
-  {
+  public Song(String name, int seconds) {
     this.name = name;
     duration = seconds;
   }
 
-  public Song(String name, int minutes, int seconds)
-  {
+  public Song(String name, int minutes, int seconds) {
     this.name = name;
     duration = (60 * minutes) + seconds;
   }
 
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
-  
-  public int getDuration()
-  {
+
+  public int getDuration() {
     return duration;
   }
 
-  public String toString()
-  {
-    return (name + " " + (duration / 60) + ":" 
-            + fmt.format(duration % 60));
+  public String toString() {
+    return (name + " " + (duration / 60) + ":"
+        + fmt.format(duration % 60));
   }
 }
  

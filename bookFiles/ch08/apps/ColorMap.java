@@ -8,17 +8,13 @@
 //---------------------------------------------------------------------------
 package ch08.apps;
 
-import java.io.*;
-import java.util.*;
-import ch08.maps.*;
-import java.awt.Color;
+import java.awt.*;
+import java.io.IOException;
 
-public class ColorMap
-{
-  public static void main(String[] args) throws IOException 
-  {
-Color c = new Color(5,27,45);
-System.out.println(c);
+public class ColorMap {
+  public static void main(String[] args) throws IOException {
+    Color c = new Color(5, 27, 45);
+    System.out.println(c);
 /*
     // Create map
     MapInterface<String, String> map = new ArrayListMap<String, String>();
@@ -58,5 +54,5 @@ System.out.println(c);
 
 */
 
-  } 
+  }
 } 

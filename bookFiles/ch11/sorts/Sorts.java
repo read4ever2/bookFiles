@@ -5,11 +5,10 @@
 //----------------------------------------------------------------------------
 package ch11.sorts;
 
-import java.util.*;
 import java.text.DecimalFormat;
+import java.util.Random;
 
-public class Sorts
-{
+public class Sorts {
   static final int SIZE = 50;            // size of array to be sorted
   static int[] values = new int[SIZE];   // values to be sorted
 
@@ -46,8 +45,7 @@ public class Sorts
     int value;
     DecimalFormat fmt = new DecimalFormat("00");
     System.out.println("The values array is:");
-    for (int index = 0; index < SIZE; index++)
-    {
+    for (int index = 0; index < SIZE; index++) {
       value = values[index];
       if (((index + 1) % 10) == 0)
         System.out.println(fmt.format(value));
@@ -95,14 +93,13 @@ public class Sorts
       if (values[index] < values[index - 1])
         swap(index, index - 1);
   }
- 
+
   static void bubbleSort()
   // Sorts the values array using the bubble sort algorithm.
   {
     int current = 0;
- 
-    while (current < (SIZE - 1))
-    {
+
+    while (current < (SIZE - 1)) {
       bubbleUp(current, SIZE - 1);
       current++;
     }
@@ -122,22 +119,20 @@ public class Sorts
   {
     boolean sorted = true;
     for (int index = endIndex; index > startIndex; index--)
-      if (values[index] < values[index - 1])
-      {
+      if (values[index] < values[index - 1]) {
         swap(index, index - 1);
         sorted = false;
       }
     return sorted;
   }
- 
+
   static void shortBubble()
   // Sorts the values array using the bubble sort algorithm.
   // The process stops as soon as values is sorted.
   {
     int current = 0;
     boolean sorted = false;
-    while ((current < (SIZE - 1)) && !sorted)
-    {
+    while ((current < (SIZE - 1)) && !sorted) {
       sorted = bubbleUp2(current, SIZE - 1);
       current++;
     }
@@ -154,23 +149,20 @@ public class Sorts
     boolean finished = false;
     int current = endIndex;
     boolean moreToSearch = true;
-    while (moreToSearch && !finished)
-    {
-      if (values[current] < values[current - 1])
-      {
+    while (moreToSearch && !finished) {
+      if (values[current] < values[current - 1]) {
         swap(current, current - 1);
         current--;
         moreToSearch = (current != startIndex);
-      }
-      else
+      } else
         finished = true;
     }
   }
- 
+
   static void insertionSort()
   // Sorts the values array using the insertion sort algorithm.
   {
-   for (int count = 1; count < SIZE; count++)
+    for (int count = 1; count < SIZE; count++)
       insertItem(0, count);
   }
 
@@ -179,40 +171,36 @@ public class Sorts
   //
   //  Merge Sort
 
-  static void merge (int leftFirst, int leftLast, int rightFirst, int rightLast)
+  static void merge(int leftFirst, int leftLast, int rightFirst, int rightLast)
   // Preconditions: values[leftFirst]..values[leftLast] are sorted.
   //                values[rightFirst]..values[rightLast] are sorted.
   // 
   // Sorts values[leftFirst]..values[rightLast] by merging the two subarrays.
   {
-    int[] tempArray = new int [SIZE];
+    int[] tempArray = new int[SIZE];
     int index = leftFirst;
     int saveFirst = leftFirst;  // to remember where to copy back
- 
-    while ((leftFirst <= leftLast) && (rightFirst <= rightLast))
-    {
-      if (values[leftFirst] < values[rightFirst])
-      {
+
+    while ((leftFirst <= leftLast) && (rightFirst <= rightLast)) {
+      if (values[leftFirst] < values[rightFirst]) {
         tempArray[index] = values[leftFirst];
         leftFirst++;
-      }
-      else
-      {
+      } else {
         tempArray[index] = values[rightFirst];
         rightFirst++;
       }
       index++;
     }
- 
+
     while (leftFirst <= leftLast)
     // Copy remaining items from left half.
- 
+
     {
       tempArray[index] = values[leftFirst];
       leftFirst++;
       index++;
     }
- 
+
     while (rightFirst <= rightLast)
     // Copy remaining items from right half.
     {
@@ -220,7 +208,7 @@ public class Sorts
       rightFirst++;
       index++;
     }
- 
+
     for (index = saveFirst; index <= rightLast; index++)
       values[index] = tempArray[index];
   }
@@ -228,8 +216,7 @@ public class Sorts
   static void mergeSort(int first, int last)
   // Sorts the values array using the merge sort algorithm.
   {
-    if (first < last)
-    {
+    if (first < last) {
       int middle = (first + last) / 2;
       mergeSort(first, middle);
       mergeSort(middle + 1, last);
@@ -242,58 +229,51 @@ public class Sorts
   //
   //  Quick Sort
 
-  static int split(int first, int last)
-  {
+  static int split(int first, int last) {
     int splitVal = values[first];
     int saveF = first;
     boolean onCorrectSide;
- 
+
     first++;
-    do
-    {
+    do {
       onCorrectSide = true;
       while (onCorrectSide)             // move first toward last
         if (values[first] > splitVal)
           onCorrectSide = false;
-        else
-        {
+        else {
           first++;
           onCorrectSide = (first <= last);
         }
- 
+
       onCorrectSide = (first <= last);
       while (onCorrectSide)             // move last toward first
         if (values[last] <= splitVal)
           onCorrectSide = false;
-        else
-         {
+        else {
           last--;
           onCorrectSide = (first <= last);
-         }
-   
-      if (first < last)                
-      {
+        }
+
+      if (first < last) {
         swap(first, last);
         first++;
         last--;
       }
     } while (first <= last);
- 
+
     swap(saveF, last);
     return last;
   }
 
-  static void quickSort(int first, int last)
-  {
-    if (first < last)
-    {
+  static void quickSort(int first, int last) {
+    if (first < last) {
       int splitPoint;
- 
+
       splitPoint = split(first, last);
       // values[first]..values[splitPoint - 1] <= splitVal
       // values[splitPoint] = splitVal
       // values[splitPoint+1]..values[last] > splitVal
- 
+
       quickSort(first, splitPoint - 1);
       quickSort(splitPoint + 1, last);
     }
@@ -312,34 +292,33 @@ public class Sorts
     int right = (hole * 2) + 2;
     if (left > lastIndex)
       // hole has no children
-      return hole;         
-    else
-    if (left == lastIndex)
+      return hole;
+    else if (left == lastIndex)
       // hole has left child only
-      if (item < values[left])             
+      if (item < values[left])
         // item < left child
         return left;
       else
         // item >= left child
         return hole;
     else
-    // hole has two children 
-    if (values[left] < values[right])
-      // left child < right child
-      if (values[right] <= item)
-        // right child <= item
-        return hole;
+      // hole has two children
+      if (values[left] < values[right])
+        // left child < right child
+        if (values[right] <= item)
+          // right child <= item
+          return hole;
+        else
+          // item < right child
+          return right;
       else
-        // item < right child
-        return right;
-    else
-    // left child >= right child
-    if (values[left] <= item)
-      // left child <= item
-      return hole;
-    else
-      // item < left child
-      return left;
+        // left child >= right child
+        if (values[left] <= item)
+          // left child <= item
+          return hole;
+        else
+          // item < left child
+          return left;
   }
 
   static void reheapDown(int item, int root, int lastIndex)
@@ -351,8 +330,7 @@ public class Sorts
     int newhole;       // index where hole should move to
 
     newhole = newHole(hole, lastIndex, item);   // find next hole
-    while (newhole != hole)
-    {
+    while (newhole != hole) {
       values[hole] = values[newhole];      // move value up
       hole = newhole;                      // move hole down
       newhole = newHole(hole, lastIndex, item);     // find next hole
@@ -365,12 +343,11 @@ public class Sorts
   {
     int index;
     // Convert the array of values into a heap.
-    for (index = SIZE/2 - 1; index >= 0; index--)
+    for (index = SIZE / 2 - 1; index >= 0; index--)
       reheapDown(values[index], index, SIZE - 1);
- 
+
     // Sort the array.
-    for (index = SIZE - 1; index >=1; index--)
-    {
+    for (index = SIZE - 1; index >= 1; index--) {
       swap(0, index);
       reheapDown(values[0], 0, index - 1);
     }
@@ -380,13 +357,12 @@ public class Sorts
   //
   //  Main
 
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     initValues();
     printValues();
     System.out.println("values is sorted: " + isSorted());
     System.out.println();
-    
+
     // make call to sorting method here (just remove //)
     // selectionSort();
     // bubbleSort();

@@ -7,19 +7,18 @@
 
 package ch04.threads;
 
-public class SyncCounter
-{
+public class SyncCounter {
   private int count;
-  
-  public SyncCounter()
-  {
-     count = 0;
+
+  public SyncCounter() {
+    count = 0;
   }
 
-  public synchronized void increment()
-  {
+  public synchronized void increment() {
     count++;
   }
 
-  public int getCount(){return count;}
+  public int getCount() {
+    return count;
+  }
 }

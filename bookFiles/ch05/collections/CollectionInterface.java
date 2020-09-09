@@ -9,8 +9,7 @@
 
 package ch05.collections;
 
-public interface CollectionInterface<T>
-{
+public interface CollectionInterface<T> {
   boolean add(T element);
   // Attempts to add element to this collection.
   // Returns true if successful, false otherwise.
@@ -23,7 +22,7 @@ public interface CollectionInterface<T>
   // Returns true if this collection contains an element e such that
   // e.equals(target); otherwise returns false.
 
-  boolean remove (T target);
+  boolean remove(T target);
   // Removes an element e from this collection such that e.equals(target)
   // and returns true. If no such e exists, returns false.
 
@@ -32,7 +31,7 @@ public interface CollectionInterface<T>
 
   boolean isEmpty();
   // Returns true if this collection is empty; otherwise, returns false.
-  
+
   int size();
   // Returns the number of elements in this collection.
 }

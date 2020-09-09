@@ -16,13 +16,12 @@
 
 package ch06.lists;
 
-import java.util.*;   // Iterator, Comparator
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class SortedABList<T> implements ListInterface<T>  
-                             
-{
+public class SortedABList<T> implements ListInterface<T> {
   protected final int DEFCAP = 100; // default capacity
-  protected T[] list;               // array to hold list’s elements
+  protected T[] list;               // array to hold listï¿½s elements
   protected int numElements = 0;    // number of elements in this list
 
   protected Comparator<T> comp;
@@ -30,23 +29,20 @@ public class SortedABList<T> implements ListInterface<T>
   // set by find method
   protected boolean found;  // true if element found, otherwise false
   protected int location;   // indicates location of element if found,
-                            // indicates add index if not found
+  // indicates add index if not found
 
-  public SortedABList() 
+  public SortedABList()
   // Precondition: T implements Comparable
   {
     list = (T[]) new Object[DEFCAP];
-    comp = new Comparator<T>()
-    {
-       public int compare(T element1, T element2)
-       {
-         return ((Comparable)element1).compareTo(element2);
-       }
+    comp = new Comparator<T>() {
+      public int compare(T element1, T element2) {
+        return ((Comparable) element1).compareTo(element2);
+      }
     };
   }
 
-  public SortedABList(Comparator<T> comp) 
-  {
+  public SortedABList(Comparator<T> comp) {
     list = (T[]) new Object[DEFCAP];
     this.comp = comp;
   }
@@ -57,17 +53,16 @@ public class SortedABList<T> implements ListInterface<T>
   {
     // Create the larger array.
     T[] larger = (T[]) new Object[list.length + DEFCAP];
-    
+
     // Copy the contents from the smaller array into the larger array.
-    for (int i = 0; i < numElements; i++)
-    {
+    for (int i = 0; i < numElements; i++) {
       larger[i] = list[i];
     }
-    
+
     // Reassign list reference.
     list = larger;
   }
-  
+
   protected void find(T target)
   // Searches list for an occurrence of an element e such that
   // compare(e, target) == 0. If successful, sets instance variables
@@ -78,32 +73,28 @@ public class SortedABList<T> implements ListInterface<T>
     location = 0;
     found = false;
     if (!isEmpty())
-       recFind(target, 0, numElements - 1);
+      recFind(target, 0, numElements - 1);
   }
 
   protected void recFind(T target, int first, int last)
   // Used by find.
   {
     int result;
-    if (first > last)
-    {
+    if (first > last) {
       found = false;
       result = comp.compare(target, list[location]);
       if (result > 0)
-         location++;    // adjust location to indicate insert index
-    }
-    else
-    {
+        location++;    // adjust location to indicate insert index
+    } else {
       location = (first + last) / 2;
       result = comp.compare(target, list[location]);
       if (result == 0)  // found target
         found = true;
-      else
-      if (result > 0)   // target too high
+      else if (result > 0)   // target too high
         recFind(target, location + 1, last);
       else               // target too low
         recFind(target, first, location - 1);
-     }
+    }
   }
 
   public boolean add(T element)
@@ -113,7 +104,7 @@ public class SortedABList<T> implements ListInterface<T>
       enlarge();
 
     find(element); // sets location to index where element belongs
-    
+
     for (int index = numElements; index > location; index--)
       list[index] = list[index - 1];
 
@@ -122,17 +113,16 @@ public class SortedABList<T> implements ListInterface<T>
     return true;
   }
 
-  public boolean remove (T target)
+  public boolean remove(T target)
   // Removes an element e from this list such that compare(e, target) == 0
   // and returns true; if no such element exists, returns false.
   {
-    find(target);    
-    if (found)
-    {
+    find(target);
+    if (found) {
       for (int i = location; i <= numElements - 2; i++)
-        list[i] = list[i+1];
+        list[i] = list[i + 1];
       list[numElements - 1] = null;
-      numElements--;  
+      numElements--;
     }
     return found;
   }
@@ -143,7 +133,7 @@ public class SortedABList<T> implements ListInterface<T>
     return numElements;
   }
 
-  public boolean contains (T target)
+  public boolean contains(T target)
   // Returns true if this list contains an element e such that 
   // compare(e, target) == 0; otherwise, returns false.
   {
@@ -155,17 +145,17 @@ public class SortedABList<T> implements ListInterface<T>
   // Returns an element e from this list such that compare(e, target) == 0;
   // if no such element exists, returns null.
   {
-    find(target);    
+    find(target);
     if (found)
       return list[location];
     else
       return null;
   }
-  
+
   public boolean isEmpty()
   // Returns true if this list is empty; otherwise, returns false.
   {
-    return (numElements == 0);  
+    return (numElements == 0);
   }
 
   public boolean isFull()
@@ -173,30 +163,30 @@ public class SortedABList<T> implements ListInterface<T>
   {
     return false;
   }
-  
+
   public void add(int index, T element)
   // Throws UnsupportedOperationException.
   {
     throw new UnsupportedOperationException("Unsupported index-based add attempted on sorted list.");
   }
-  
+
   public T set(int index, T newElement)
   // Throws UnsupportedOperationException.
   {
     throw new UnsupportedOperationException("Unsupported index-based set attempted on sorted list.");
   }
-    
+
   public T get(int index)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index >= size().
   // Otherwise, returns the element on this list at position index.
   {
     if ((index < 0) || (index >= size()))
-      throw new IndexOutOfBoundsException("illegal index of " + index + 
-                             " passed to ABList get method.\n");
- 
+      throw new IndexOutOfBoundsException("illegal index of " + index +
+          " passed to ABList get method.\n");
+
     return list[index];
-  }  
+  }
 
   public int indexOf(T target)
   // If this list contains an element e such that compare(e, target) == 0, 
@@ -204,17 +194,15 @@ public class SortedABList<T> implements ListInterface<T>
   // Otherwise, returns -1.
   {
     find(target);
-    if (found)
-    {
+    if (found) {
       // must adjust in case there are duplicate values
       while ((location != 0) && (comp.compare(list[location - 1], target) == 0))
         location--;
       return location;
-    }
-    else  
+    } else
       return -1;
   }
-  
+
   public T remove(int index)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index >= size().
@@ -223,13 +211,13 @@ public class SortedABList<T> implements ListInterface<T>
   // higher than that index have 1 subtracted from their position.
   {
     if ((index < 0) || (index >= size()))
-      throw new IndexOutOfBoundsException("illegal index of " + index + 
-                             " passed to ABList remove method.\n");
+      throw new IndexOutOfBoundsException("illegal index of " + index +
+          " passed to ABList remove method.\n");
 
     T hold = list[index];
-    for (int i = index; i < numElements-1; i++)
+    for (int i = index; i < numElements - 1; i++)
       list[i] = list[i + 1];
-    list[numElements-1] = null;
+    list[numElements - 1] = null;
     numElements--;
     return hold;
   }
@@ -238,23 +226,22 @@ public class SortedABList<T> implements ListInterface<T>
   public Iterator<T> iterator()
   // Returns an Iterator over this list.
   {
-    return new Iterator<T>()
-    {
+    return new Iterator<T>() {
       private int previousPos = -1;
 
       public boolean hasNext()
       // Returns true if the iteration has more elements; otherwise returns false.
       {
-        return (previousPos < (size() - 1)) ;
+        return (previousPos < (size() - 1));
       }
-      
+
       public T next()
       // Returns the next element in the iteration.
       // Throws NoSuchElementException - if the iteration has no more elements
-      { 
+      {
         if (!hasNext())
-          throw new IndexOutOfBoundsException("illegal invocation of next " + 
-                             " in LBList iterator.\n");
+          throw new IndexOutOfBoundsException("illegal invocation of next " +
+              " in LBList iterator.\n");
         previousPos++;
         return list[previousPos];
       }
@@ -267,10 +254,10 @@ public class SortedABList<T> implements ListInterface<T>
       // way other than by calling this method.
       {
         for (int i = previousPos; i <= numElements - 2; i++)
-          list[i] = list[i+1];
+          list[i] = list[i + 1];
         list[numElements - 1] = null;
         numElements--;
-        previousPos--;  
+        previousPos--;
       }
     };
   }

@@ -1,10 +1,9 @@
 package ch05.apps;
-import support.*;
 
-public class FPDriver 
-{
-  public static void main(String[] args)
-  {
+import support.FamousPerson;
+
+public class FPDriver {
+  public static void main(String[] args) {
     FamousPerson p1, p2, p3;
     p1 = new FamousPerson("Herman", "Hollerith", 1860, "Developed mechanical counting machine based on punched cards.");
     System.out.println(p1);

@@ -17,31 +17,26 @@
 //---------------------------------------------------------------------------
 package ch08.maps;
 
-import java.util.Iterator;  
+import java.util.Iterator;
 
-public class HMap<K, V>  implements MapInterface<K,V>
-{
-  protected MapEntry[] map;
-  
+public class HMap<K, V> implements MapInterface<K, V> {
   protected final int DEFCAP = 1000;     // default capacity
   protected final double DEFLOAD = 0.75; // default load
-  
+  protected MapEntry[] map;
   protected int origCap;  // original capacity
   protected int currCap;  // current capacity
   protected double load;
-  
+
   protected int numPairs = 0;    // number of pairs in this map
-   
-  public HMap() 
-  {
-    map =  new MapEntry[DEFCAP];
+
+  public HMap() {
+    map = new MapEntry[DEFCAP];
     origCap = DEFCAP;
     currCap = DEFCAP;
     load = DEFLOAD;
   }
 
-  public HMap(int initCap, double initLoad) 
-  {
+  public HMap(int initCap, double initLoad) {
     map = new MapEntry[initCap];
     origCap = initCap;
     currCap = initCap;
@@ -53,23 +48,22 @@ public class HMap<K, V>  implements MapInterface<K,V>
   // equal to the original capacity.
   {
     // create a snapshot iterator of the map and save current size
-    Iterator<MapEntry<K,V>> i = iterator();
+    Iterator<MapEntry<K, V>> i = iterator();
     int count = numPairs;
 
     // create the larger array and reset variables
     map = new MapEntry[currCap + origCap];
-    currCap = currCap + origCap; 
+    currCap = currCap + origCap;
     numPairs = 0;
-    
+
     // put the contents of the current map into the larger array
     MapEntry entry;
-    for (int n = 1; n <= count; n++)
-    {
+    for (int n = 1; n <= count; n++) {
       entry = i.next();
-      this.put((K)entry.getKey(), (V)entry.getValue());
+      this.put((K) entry.getKey(), (V) entry.getValue());
     }
   }
- 
+
   public V put(K k, V v)
   // If an entry in this map with key k already exists then the value 
   // associated with that entry is replaced by value v and the original
@@ -80,23 +74,22 @@ public class HMap<K, V>  implements MapInterface<K,V>
       throw new IllegalArgumentException("Maps do not allow null keys.");
 
     MapEntry<K, V> entry = new MapEntry<K, V>(k, v);
-    
+
     int location = Math.abs(k.hashCode()) % currCap;
     while ((map[location] != null) && !(map[location].getKey().equals(k)))
-      location = (location + 1) % currCap;   
+      location = (location + 1) % currCap;
 
     if (map[location] == null)  // k was not in map
     {
-      map[location] = entry; 
+      map[location] = entry;
       numPairs++;
-      if ((float)numPairs/currCap > load)
-        enlarge();  
+      if ((float) numPairs / currCap > load)
+        enlarge();
       return null;
-    }
-    else    // k already in map
+    } else    // k already in map
     {
-      V temp = (V)map[location].getValue();
-      map[location] = entry; 
+      V temp = (V) map[location].getValue();
+      map[location] = entry;
       return temp;
     }
   }
@@ -110,19 +103,19 @@ public class HMap<K, V>  implements MapInterface<K,V>
 
     int location = Math.abs(k.hashCode()) % currCap;
     while ((map[location] != null) && !(map[location].getKey().equals(k)))
-      location = (location + 1) % currCap;   
+      location = (location + 1) % currCap;
 
     if (map[location] == null)  // k was not in map
       return null;
     else                        // k in map
-      return (V)map[location].getValue();
+      return (V) map[location].getValue();
   }
 
   public V remove(K k)
   // Throws UnsupportedOperationException.
   {
     throw new UnsupportedOperationException("HMap does not allow remove.");
-  }    
+  }
 
   public boolean contains(K k)
   // Returns true if an entry in this map with key k exists;
@@ -136,18 +129,18 @@ public class HMap<K, V>  implements MapInterface<K,V>
       if (map[location].getKey().equals(k))
         return true;
       else
-        location = (location + 1) % currCap;   
-    
+        location = (location + 1) % currCap;
+
     // if get this far then no current entry is associated with k
     return false;
   }
-   
+
   public boolean isEmpty()
   // Returns true if this map is empty; otherwise, returns false.
   {
     return (numPairs == 0);
   }
-  
+
   public boolean isFull()
   // Returns true if this map is full; otherwise, returns false.
   {
@@ -160,39 +153,45 @@ public class HMap<K, V>  implements MapInterface<K,V>
     return numPairs;
   }
 
-  private class MapIterator implements Iterator<MapEntry<K,V>>
-  // Provides a snapshot Iterator over this map.
+  public Iterator<MapEntry<K, V>> iterator()
+  // Returns a snapshot Iterator over this map.
   // Remove is not supported and throws UnsupportedOperationException.
+
+  {
+    return new MapIterator();
+  }
+
+  private class MapIterator implements Iterator<MapEntry<K, V>>
+      // Provides a snapshot Iterator over this map.
+      // Remove is not supported and throws UnsupportedOperationException.
   {
     int listSize = size();
-    private MapEntry[] list = new MapEntry[listSize];
+    private final MapEntry[] list = new MapEntry[listSize];
     private int previousPos = -1; // previous position returned from list
-      
-    public MapIterator()
-    {
+
+    public MapIterator() {
       int next = -1;
-      for (int i = 0; i < listSize; i++)
-      {
+      for (int i = 0; i < listSize; i++) {
         next++;
         while (map[next] == null)
           next++;
         list[i] = map[next];
       }
     }
-      
+
     public boolean hasNext()
     // Returns true if the iteration has more entries; otherwise returns false.
     {
-      return (previousPos < (listSize - 1)) ;
+      return (previousPos < (listSize - 1));
     }
-      
-    public MapEntry<K,V> next()
+
+    public MapEntry<K, V> next()
     // Returns the next entry in the iteration.
     // Throws NoSuchElementException - if the iteration has no more entries
-    { 
+    {
       if (!hasNext())
-        throw new IndexOutOfBoundsException("illegal invocation of next " + 
-                           " in HMap iterator.\n");
+        throw new IndexOutOfBoundsException("illegal invocation of next " +
+            " in HMap iterator.\n");
       previousPos++;
       return list[previousPos];
     }
@@ -201,17 +200,9 @@ public class HMap<K, V>  implements MapInterface<K,V>
     // Throws UnsupportedOperationException.
     // Not supported. Removal from snapshot iteration is meaningless.
     {
-      throw new UnsupportedOperationException("Unsupported remove attempted on " 
-                                            + "HMap iterator.\n");
+      throw new UnsupportedOperationException("Unsupported remove attempted on "
+          + "HMap iterator.\n");
     }
-  }
-
-  public Iterator<MapEntry<K,V>> iterator()
-  // Returns a snapshot Iterator over this map.
-  // Remove is not supported and throws UnsupportedOperationException.
-
-  {
-    return new MapIterator();
   }
 }
  

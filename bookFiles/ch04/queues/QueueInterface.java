@@ -7,8 +7,7 @@
 
 package ch04.queues;
 
-public interface QueueInterface<T>
-{
+public interface QueueInterface<T> {
   void enqueue(T element) throws QueueOverflowException;
   // Throws QueueOverflowException if this queue is full;
   // otherwise, adds element to the rear of this queue.
@@ -22,7 +21,7 @@ public interface QueueInterface<T>
 
   boolean isEmpty();
   // Returns true if this queue is empty; otherwise, returns false.
-  
+
   int size();
   // Returns the number of elements in this queue.
 }

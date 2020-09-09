@@ -5,12 +5,11 @@
 //----------------------------------------------------------------------------
 package ch09.apps;
 
-import ch09.priorityQueues.*;
+import ch09.priorityQueues.HeapPriQ;
+import ch09.priorityQueues.PriQueueInterface;
 
-public class UseHeap
-{
-  public static void main(String[] args)
-  { 
+public class UseHeap {
+  public static void main(String[] args) {
     PriQueueInterface<String> h = new HeapPriQ<String>(10);
     h.enqueue("J");
     h.enqueue("A");
@@ -18,11 +17,11 @@ public class UseHeap
     h.enqueue("B");
     h.enqueue("L");
     h.enqueue("E");
-    
+
     System.out.println(h);
-    
+
     System.out.println(h.dequeue() + "\n");
-    
+
     System.out.println(h);
   }
 }

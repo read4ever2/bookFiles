@@ -1,11 +1,9 @@
 package ch04.concurrency;
 
-import ch04.threads.*;
+import ch04.threads.Counter;
 
-public class Demo01
-{
-  public static void main(String[] args)
-  {
+public class Demo01 {
+  public static void main(String[] args) {
     Counter c = new Counter();
     c.increment();
     c.increment();

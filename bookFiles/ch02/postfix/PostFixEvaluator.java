@@ -6,41 +6,37 @@
 
 package ch02.postfix;
 
-import ch02.stacks.*;
+import ch02.stacks.ArrayBoundedStack;
+import ch02.stacks.StackInterface;
+
 import java.util.Scanner;
 
-public class PostFixEvaluator
-{
-  public static int evaluate(String expression)
-  {
+public class PostFixEvaluator {
+  public static int evaluate(String expression) {
     Scanner tokenizer = new Scanner(expression);
-    StackInterface<Integer> stack = new ArrayBoundedStack<Integer>(50);  
+    StackInterface<Integer> stack = new ArrayBoundedStack<Integer>(50);
 
     int value;
     String operator;
     int operand1, operand2;
     int result = 0;
 
-    while (tokenizer.hasNext())
-    {
-      if (tokenizer.hasNextInt())
-      {
+    while (tokenizer.hasNext()) {
+      if (tokenizer.hasNextInt()) {
         // Process operand.
         value = tokenizer.nextInt();
         if (stack.isFull())
           throw new PostFixException("Too many operands-stack overflow");
         stack.push(value);
-      }
-      else
-      {
+      } else {
         // Process operator.
         operator = tokenizer.next();
-        
+
         // Check for illegal symbol
         if (!(operator.equals("/") || operator.equals("*") ||
-              operator.equals("+") || operator.equals("-")))
+            operator.equals("+") || operator.equals("-")))
           throw new PostFixException("Illegal symbol: " + operator);
-  
+
         // Obtain second operand from stack.
         if (stack.isEmpty())
           throw new PostFixException("Not enough operands-stack underflow");
@@ -56,16 +52,13 @@ public class PostFixEvaluator
         // Perform operation.
         if (operator.equals("/"))
           result = operand1 / operand2;
-        else
-        if(operator.equals("*"))
+        else if (operator.equals("*"))
           result = operand1 * operand2;
-        else
-        if(operator.equals("+"))
+        else if (operator.equals("+"))
           result = operand1 + operand2;
-        else
-        if(operator.equals("-"))
+        else if (operator.equals("-"))
           result = operand1 - operand2;
- 
+
         // Push result of operation onto stack.
         stack.push(result);
       }

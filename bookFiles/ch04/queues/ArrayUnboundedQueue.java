@@ -13,8 +13,7 @@
 
 package ch04.queues;
 
-public class ArrayUnboundedQueue<T> implements QueueInterface<T> 
-{
+public class ArrayUnboundedQueue<T> implements QueueInterface<T> {
   protected final int DEFCAP = 100; // default capacity
   protected T[] elements;           // array that holds queue elements
   protected int origCap;            // original capacity
@@ -22,15 +21,13 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
   protected int front = 0;          // index of front of queue
   protected int rear;               // index of rear of queue
 
-  public ArrayUnboundedQueue() 
-  {
+  public ArrayUnboundedQueue() {
     elements = (T[]) new Object[DEFCAP];
     rear = DEFCAP - 1;
     origCap = DEFCAP;
   }
 
-  public ArrayUnboundedQueue(int origCap) 
-  {
+  public ArrayUnboundedQueue(int origCap) {
     elements = (T[]) new Object[origCap];
     rear = origCap - 1;
     this.origCap = origCap;
@@ -42,15 +39,14 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
   {
     // create the larger array
     T[] larger = (T[]) new Object[elements.length + origCap];
-    
+
     // copy the contents from the smaller array into the larger array
     int currSmaller = front;
-    for (int currLarger = 0; currLarger < numElements; currLarger++)
-    {
+    for (int currLarger = 0; currLarger < numElements; currLarger++) {
       larger[currLarger] = elements[currSmaller];
       currSmaller = (currSmaller + 1) % elements.length;
     }
-    
+
     // update instance variables
     elements = larger;
     front = 0;
@@ -59,8 +55,8 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
 
   public void enqueue(T element)
   // Adds element to the rear of this queue.
-  {  
-    if (numElements == elements.length) 
+  {
+    if (numElements == elements.length)
       enlarge();
 
     rear = (rear + 1) % elements.length;
@@ -71,11 +67,10 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
   public T dequeue()
   // Throws QueueUnderflowException if this queue is empty;
   // otherwise, removes front element from this queue and returns it.
-  {       
+  {
     if (isEmpty())
       throw new QueueUnderflowException("Dequeue attempted on empty queue.");
-    else
-    {
+    else {
       T toReturn = elements[front];
       elements[front] = null;
       front = (front + 1) % elements.length;
@@ -86,19 +81,19 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
 
   public boolean isEmpty()
   // Returns true if this queue is empty; otherwise, returns false.
-  {              
+  {
     return (numElements == 0);
   }
-  
+
   public boolean isFull()
   // Returns false - an unbounded queue is never full.
-  {              
+  {
     return false;
   }
-  
+
   public int size()
   // Returns the number of elements in this queue.
   {
     return numElements;
-  } 
+  }
 }
