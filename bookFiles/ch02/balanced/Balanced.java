@@ -8,10 +8,11 @@
 //----------------------------------------------------------------------
 package ch02.balanced;
 
-import ch02.stacks.*;
+import ch02.stacks.ArrayBoundedStack;
+import ch02.stacks.StackInterface;
+import ch02.stacks.StackUnderflowException;
 
-public class Balanced 
-{
+public class Balanced {
   protected String openSet;
   protected String closeSet;
 
@@ -30,12 +31,12 @@ public class Balanced
   // Returns 2 if expression came to end prematurely.
   {
     char currChar;                   // current expression character being studied
-    int  currCharIndex;              // index of current character
-    int  lastCharIndex;              // index of last character in the expression
+    int currCharIndex;              // index of current character
+    int lastCharIndex;              // index of last character in the expression
 
     int openIndex;                   // index of current character in openSet
     int closeIndex;                  // index of current character in closeSet
-    
+
     boolean stillBalanced = true;    // true as long as expression is balanced
 
     StackInterface<Integer> stack;   // holds unmatched open symbols
@@ -50,38 +51,34 @@ public class Balanced
       currChar = expression.charAt(currCharIndex);
       openIndex = openSet.indexOf(currChar);
 
-      if(openIndex != -1)   // if the current character is in the openSet
+      if (openIndex != -1)   // if the current character is in the openSet
       {
         // Push the index onto the stack.
         stack.push(openIndex);
-      }
-        else
+      } else {
+        closeIndex = closeSet.indexOf(currChar);
+        if (closeIndex != -1)     // if the current character is in the closeSet
         {
-          closeIndex = closeSet.indexOf(currChar);
-          if(closeIndex != -1)     // if the current character is in the closeSet 
+          try                    // try to pop an index off the stack
           {
-            try                    // try to pop an index off the stack
-            {
-              openIndex = stack.top();
-              stack.pop();     
-              if (openIndex != closeIndex)   // if popped index doesn't match
-                stillBalanced = false;         // then expression is not balanced
-            }
-            catch(StackUnderflowException e) // if stack was empty
-            {
-              stillBalanced = false;           // then expression is not balanced
-            }
+            openIndex = stack.top();
+            stack.pop();
+            if (openIndex != closeIndex)   // if popped index doesn't match
+              stillBalanced = false;         // then expression is not balanced
+          } catch (StackUnderflowException e) // if stack was empty
+          {
+            stillBalanced = false;           // then expression is not balanced
           }
         }
-        currCharIndex++;             // set up processing of next character
       }
+      currCharIndex++;             // set up processing of next character
+    }
 
-      if (!stillBalanced)
-        return 1;             // unbalanced symbols
-      else
-      if (!stack.isEmpty())
-        return 2;             // premature end of expression
-      else
-        return 0;             // expression is balanced
+    if (!stillBalanced)
+      return 1;             // unbalanced symbols
+    else if (!stack.isEmpty())
+      return 2;             // premature end of expression
+    else
+      return 0;             // expression is balanced
   }
 }

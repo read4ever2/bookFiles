@@ -12,10 +12,10 @@
 
 package ch10.graphs;
 
-import ch04.queues.*;
+import ch04.queues.LinkedQueue;
+import ch04.queues.QueueInterface;
 
-public class WeightedGraph<T> implements WeightedGraphInterface<T>
-{
+public class WeightedGraph<T> implements WeightedGraphInterface<T> {
   public static final int NULL_EDGE = 0;
   private static final int DEFCAP = 50;  // default capacity
   private int numVertices;
@@ -33,7 +33,7 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
     marks = new boolean[DEFCAP];
     edges = new int[DEFCAP][DEFCAP];
   }
- 
+
   public WeightedGraph(int maxV)
   // Instantiates a graph with capacity maxV.
   {
@@ -62,8 +62,7 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
   // Adds vertex to this graph.
   {
     vertices[numVertices] = vertex;
-    for (int index = 0; index < numVertices; index++)
-    {
+    for (int index = 0; index < numVertices; index++) {
       edges[numVertices][index] = NULL_EDGE;
       edges[index][numVertices] = NULL_EDGE;
     }
@@ -74,7 +73,7 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
   // Returns true if this graph contains vertex; otherwise, returns false.
   {
   }
-  
+
   private int indexIs(T vertex)
   // Returns the index of vertex in vertices.
   {
@@ -89,7 +88,7 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
   {
     int row;
     int column;
- 
+
     row = indexIs(fromVertex);
     column = indexIs(toVertex);
     edges[row][column] = weight;
@@ -97,11 +96,11 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
 
   public int weightIs(T fromVertex, T toVertex)
   // If edge from fromVertex to toVertex exists, returns the weight of edge;
-  // otherwise, returns a special “null-edge” value.
+  // otherwise, returns a special ï¿½null-edgeï¿½ value.
   {
     int row;
     int column;
- 
+
     row = indexIs(fromVertex);
     column = indexIs(toVertex);
     return edges[row][column];
@@ -134,12 +133,12 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
   // Returns true if vertex is marked; otherwise, returns false.
   {
   }
-  
+
   public T getUnmarked()
   // Returns an unmarked vertex if any exist; otherwise, returns null.
   {
   }
-  
+
   public boolean edgeExists(T vertex1, T vertex2)
   // Preconditions:  vertex1 and vertex2 are in the set of vertices
   //
@@ -158,5 +157,5 @@ public class WeightedGraph<T> implements WeightedGraphInterface<T>
     edges[indexIs(vertex1)][indexIs(vertex2)] = NULL_EDGE;
     return existed;
   }
-  
+
 }
