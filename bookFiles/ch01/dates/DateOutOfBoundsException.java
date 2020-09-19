@@ -6,15 +6,12 @@
 
 package ch01.dates;
 
-public class DateOutOfBoundsException extends Exception
-{
-  public DateOutOfBoundsException()
-  {
+public class DateOutOfBoundsException extends Exception {
+  public DateOutOfBoundsException() {
     super();
   }
 
-  public DateOutOfBoundsException(String message)
-  {
+  public DateOutOfBoundsException(String message) {
     super(message);
   }
 }

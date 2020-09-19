@@ -6,11 +6,12 @@
 //---------------------------------------------------------------------
 package ch04.palindromes;
 
-import ch02.stacks.*;
-import ch04.queues.*;
+import ch02.stacks.ArrayBoundedStack;
+import ch02.stacks.StackInterface;
+import ch04.queues.ArrayBoundedQueue;
+import ch04.queues.QueueInterface;
 
-public class Palindrome 
-{
+public class Palindrome {
   public static boolean test(String candidate)
   // Returns true if candidate is a palindrome, false otherwise.
   {
@@ -29,28 +30,25 @@ public class Palindrome
     queue = new ArrayBoundedQueue<Character>(length);
 
     // obtain and handle characters
-    for (int i = 0; i < length; i++)
-    {
+    for (int i = 0; i < length; i++) {
       ch = candidate.charAt(i);
-      if (Character.isLetter(ch))
-      {
+      if (Character.isLetter(ch)) {
         ch = Character.toLowerCase(ch);
         stack.push(ch);
         queue.enqueue(ch);
       }
     }
-    
+
     // determine if palindrome
     stillPalindrome = true;
-    while (stillPalindrome && !stack.isEmpty())
-    {
+    while (stillPalindrome && !stack.isEmpty()) {
       fromStack = stack.top();
       stack.pop();
       fromQueue = queue.dequeue();
       if (fromStack != fromQueue)
         stillPalindrome = false;
     }
-    
+
     // return result
     return stillPalindrome;
   }

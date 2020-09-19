@@ -10,10 +10,10 @@
 //----------------------------------------------------------------------------
 package ch09.priorityQueues;
 
-import java.util.*; // ArrayList, Comparator
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class HeapPriQ<T> implements PriQueueInterface<T>
-{
+public class HeapPriQ<T> implements PriQueueInterface<T> {
   protected ArrayList<T> elements;  // priority queue elements
   protected int lastIndex;          // index of last element in priority queue
   protected int maxIndex;           // index of last position in ArrayList
@@ -27,12 +27,10 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
     lastIndex = -1;
     maxIndex = maxSize - 1;
 
-    comp = new Comparator<T>()
-    {
-       public int compare(T element1, T element2)
-       {
-         return ((Comparable)element1).compareTo(element2);
-       }
+    comp = new Comparator<T>() {
+      public int compare(T element1, T element2) {
+        return ((Comparable) element1).compareTo(element2);
+      }
     };
   }
 
@@ -57,7 +55,7 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
   {
     return (lastIndex == maxIndex);
   }
-  
+
   public int size()
   // Returns the number of elements on this priority queue. 
   {
@@ -70,12 +68,11 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
   {
     int hole = lastIndex;
     while ((hole > 0)    // hole is not root and element > hole's parent
-           &&                                               
-      (comp.compare(element, elements.get((hole - 1) / 2)) > 0)) 
-      {
+        &&
+        (comp.compare(element, elements.get((hole - 1) / 2)) > 0)) {
       // move hole's parent down and then move hole up
-      elements.set(hole,elements.get((hole - 1) / 2)); 
-      hole = (hole - 1) / 2;                                
+      elements.set(hole, elements.get((hole - 1) / 2));
+      hole = (hole - 1) / 2;
     }
     elements.set(hole, element);  // place element into final hole
   }
@@ -86,10 +83,9 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
   {
     if (lastIndex == maxIndex)
       throw new PriQOverflowException("Priority queue is full");
-    else
-    {
+    else {
       lastIndex++;
-      elements.add(lastIndex,element);
+      elements.add(lastIndex, element);
       reheapUp(element);
     }
   }
@@ -103,34 +99,33 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
 
     if (left > lastIndex)
       // hole has no children
-      return hole;         
-    else
-    if (left == lastIndex)
+      return hole;
+    else if (left == lastIndex)
       // hole has left child only
-      if (comp.compare(element, elements.get(left)) < 0)             
+      if (comp.compare(element, elements.get(left)) < 0)
         // element < left child
         return left;
       else
         // element >= left child
         return hole;
     else
-    // hole has two children 
-    if (comp.compare(elements.get(left), elements.get(right)) < 0)
-      // left child < right child
-      if (comp.compare(elements.get(right), element) <= 0)
-        // right child <= element
-        return hole;
+      // hole has two children
+      if (comp.compare(elements.get(left), elements.get(right)) < 0)
+        // left child < right child
+        if (comp.compare(elements.get(right), element) <= 0)
+          // right child <= element
+          return hole;
+        else
+          // element < right child
+          return right;
       else
-        // element < right child
-        return right;
-    else
-    // left child >= right child
-    if (comp.compare(elements.get(left), element) <= 0)
-      // left child <= element
-      return hole;
-    else
-      // element < left child
-      return left;
+        // left child >= right child
+        if (comp.compare(elements.get(left), element) <= 0)
+          // left child <= element
+          return hole;
+        else
+          // element < left child
+          return left;
   }
 
   private void reheapDown(T element)
@@ -141,9 +136,8 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
     int next;          // next index where hole should move to
 
     next = newHole(hole, element);   // find next hole
-    while (next != hole)
-    {
-      elements.set(hole,elements.get(next));  // move element up
+    while (next != hole) {
+      elements.set(hole, elements.get(next));  // move element up
       hole = next;                            // move hole down
       next = newHole(hole, element);          // find next hole
     }
@@ -160,13 +154,12 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
 
     if (lastIndex == -1)
       throw new PriQUnderflowException("Priority queue is empty");
-    else
-    {
+    else {
       hold = elements.get(0);              // remember element to be returned
       toMove = elements.remove(lastIndex); // element to reheap down
       lastIndex--;                         // decrease priority queue size
       if (lastIndex != -1)                 // if priority queue is not empty
-         reheapDown(toMove);                  // restore heap properties
+        reheapDown(toMove);                  // restore heap properties
       return hold;                         // return largest element
     }
   }
@@ -175,7 +168,7 @@ public class HeapPriQ<T> implements PriQueueInterface<T>
   public String toString()
   // Returns a string of all the heap elements.
   {
-    String theHeap = new String("the heap is:\n");
+    String theHeap = "the heap is:\n";
     for (int index = 0; index <= lastIndex; index++)
       theHeap = theHeap + index + ". " + elements.get(index) + "\n";
     return theHeap;

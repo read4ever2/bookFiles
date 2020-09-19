@@ -7,13 +7,13 @@
 
 package ch06.apps;
 
-import ch06.lists.*;
-import support.cards.*;      // Card and CardDeck
+import ch06.lists.ABList;
+import ch06.lists.ListInterface;
+import support.cards.Card;
+import support.cards.CardDeck;
 
-public class Pairs 
-{
-  public static void main(String[] args)
-  {
+public class Pairs {
+  public static void main(String[] args) {
     final int HANDSIZE = 5;        // number of cards per hand
     final int NUMHANDS = 1000000;  // total number of hands
     int numPairs = 0;              // number of hands with pairs
@@ -22,16 +22,14 @@ public class Pairs
 
     Card card;                       // playing card
     CardDeck deck = new CardDeck();  // deck of playing cards
-    
+
     ListInterface<Card> hand = new ABList<Card>(HANDSIZE); // the poker hand
 
-    for (int i = 0; i < NUMHANDS; i++)
-    {
+    for (int i = 0; i < NUMHANDS; i++) {
       deck.shuffle();
       hand = new ABList<Card>(HANDSIZE);
       isPair = false;
-      for (int j = 0; j < HANDSIZE; j++)
-      {
+      for (int j = 0; j < HANDSIZE; j++) {
         card = deck.nextCard();
         if (hand.contains(card))
           isPair = true;
@@ -41,7 +39,7 @@ public class Pairs
         numPairs = numPairs + 1;
     }
 
-    probability = numPairs/(float)NUMHANDS;
+    probability = numPairs / (float) NUMHANDS;
 
     System.out.println();
     System.out.print("There were " + numPairs + " hands out of " + NUMHANDS);

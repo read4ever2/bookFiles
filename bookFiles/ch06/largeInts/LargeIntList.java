@@ -6,14 +6,14 @@
 package ch06.largeInts;
 
 import support.DLLNode;
+
 import java.util.Iterator;
- 
-public class LargeIntList
-{
+
+public class LargeIntList {
   protected DLLNode<Byte> listFirst;   // Ref to the first node on list
   protected DLLNode<Byte> listLast;    // Ref to the last node on the list
   protected int numElements;           // Number of elements in the list
- 
+
   public LargeIntList()
   // Creates an empty list object
   {
@@ -31,8 +31,7 @@ public class LargeIntList
   public Iterator<Byte> forward()
   // Returns an Iterator that iterates from front to rear.
   {
-    return new Iterator<Byte>()
-    {
+    return new Iterator<Byte>() {
       private DLLNode<Byte> next = listFirst; // next node to return
 
       public boolean hasNext()
@@ -40,15 +39,15 @@ public class LargeIntList
       {
         return (next != null);
       }
-      
+
       public Byte next()
       // Returns the next element in the iteration.
       // Throws NoSuchElementException - if no more elements
-      { 
+      {
         if (!hasNext())
           throw new IndexOutOfBoundsException("Illegal invocation of " +
-                           " next in LargeIntList forward iterator.\n");
-  
+              " next in LargeIntList forward iterator.\n");
+
         Byte hold = next.getInfo();        // holds info for return
         next = next.getForward();
         return hold;
@@ -58,7 +57,7 @@ public class LargeIntList
       // Throws UnsupportedOperationException.
       {
         throw new UnsupportedOperationException("Unsupported remove " +
-                        "attempted on LargeIntList forward iterator.");
+            "attempted on LargeIntList forward iterator.");
       }
     };
   }
@@ -66,8 +65,7 @@ public class LargeIntList
   public Iterator<Byte> reverse()
   // Returns an Iterator that iterates rear to front.
   {
-    return new Iterator<Byte>()
-    {
+    return new Iterator<Byte>() {
       private DLLNode<Byte> next = listLast; // next node to return
 
       public boolean hasNext()
@@ -75,15 +73,15 @@ public class LargeIntList
       {
         return (next != null);
       }
-      
+
       public Byte next()
       // Returns the next element in the iteration.
       // Throws NoSuchElementException - if no more elements
-      { 
+      {
         if (!hasNext())
           throw new IndexOutOfBoundsException("Illegal invocation of " +
-                            "next in LargeIntList reverse iterator.\n");
-  
+              "next in LargeIntList reverse iterator.\n");
+
         Byte hold = next.getInfo();        // holds info for return
         next = next.getBack();
         return hold;
@@ -93,12 +91,12 @@ public class LargeIntList
       // Throws UnsupportedOperationException.
       {
         throw new UnsupportedOperationException("Unsupported remove " +
-                        "attempted on LargeIntList forward iterator.");
+            "attempted on LargeIntList forward iterator.");
       }
     };
   }
 
-  public void addFront (byte element)
+  public void addFront(byte element)
   // Adds the value of element to the beginning of this list
   {
     DLLNode<Byte> newNode = new DLLNode<Byte>(element); // node being added
@@ -108,8 +106,7 @@ public class LargeIntList
     {
       listFirst = newNode;
       listLast = newNode;
-    }
-    else                     // Adding into a non-empty list
+    } else                     // Adding into a non-empty list
     {
       listFirst.setBack(newNode);
       listFirst = newNode;
@@ -117,7 +114,7 @@ public class LargeIntList
     numElements++;
   }
 
-  public void addEnd (byte element)
+  public void addEnd(byte element)
   // Adds the value of element to the end of this list
   {
     DLLNode<Byte> newNode = new DLLNode<Byte>(element); // node being added
@@ -127,8 +124,7 @@ public class LargeIntList
     {
       listFirst = newNode;
       listLast = newNode;
-    }
-    else                      // Adding into a non-empty list
+    } else                      // Adding into a non-empty list
     {
       listLast.setForward(newNode);
       listLast = newNode;

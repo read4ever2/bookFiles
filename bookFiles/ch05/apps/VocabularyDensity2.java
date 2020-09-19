@@ -8,14 +8,15 @@
 //---------------------------------------------------------------------------
 package ch05.apps;
 
-import java.io.*;
-import java.util.*;
-import ch05.collections.*;
+import ch05.collections.CollectionInterface;
+import ch05.collections.SortedArrayCollection;
 
-public class VocabularyDensity2
-{
-  public static void main(String[] args) throws IOException 
-  {
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class VocabularyDensity2 {
+  public static void main(String[] args) throws IOException {
     final int CAPACITY = 700000;   // original capacity of collection
     String fname = args[0];      // input file of text
     String word;                 // current word
@@ -32,17 +33,17 @@ public class VocabularyDensity2
 
     while (wordsIn.hasNext())      // while more words to process
     {
-      word = wordsIn.next();          
+      word = wordsIn.next();
       word = word.toLowerCase();
       if (!words.contains(word))
         words.add(word);
       numWords++;
     }
-  
-    density = (double)numWords/words.size();
+
+    density = (double) numWords / words.size();
     System.out.println("Analyzed file " + fname);
     System.out.println("\n\tTotal words:  " + numWords);
     System.out.println("\tUnique words: " + words.size());
     System.out.printf("\n\tVocabulary density: %.2f", density);
-  } 
+  }
 } 

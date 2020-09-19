@@ -1,10 +1,8 @@
 package ch01.dates;
 
-public class IncDate extends Date
-{
+public class IncDate extends Date {
 
-  public IncDate(int newMonth, int newDay, int newYear)
-  {
+  public IncDate(int newMonth, int newDay, int newYear) {
     super(newMonth, newDay, newYear);
   }
 

@@ -7,11 +7,11 @@
 
 package ch06.lists;
 
-import java.util.Iterator;
 import support.LLNode;
 
-public class LBList<T> implements ListInterface<T>  
-{
+import java.util.Iterator;
+
+public class LBList<T> implements ListInterface<T> {
   protected LLNode<T> front;     // reference to the front of this list
   protected LLNode<T> rear;      // reference to the rear of this list
   protected int numElements = 0; // number of elements in this list
@@ -22,8 +22,7 @@ public class LBList<T> implements ListInterface<T>
   protected LLNode<T> location;   // node containing target, if found
   protected LLNode<T> previous;   // node preceding location
 
-  public LBList()
-  {
+  public LBList() {
     numElements = 0;
     front = null;
     rear = null;
@@ -53,16 +52,13 @@ public class LBList<T> implements ListInterface<T>
     found = false;
     targetIndex = -1;
 
-    while (location != null) 
-    {
+    while (location != null) {
       targetIndex++;
       if (location.getInfo().equals(target))  // if they match
       {
-       found = true;
-       return;
-      }
-      else
-      {
+        found = true;
+        return;
+      } else {
         previous = location;
         location = location.getLink();
       }
@@ -75,7 +71,7 @@ public class LBList<T> implements ListInterface<T>
     return numElements;
   }
 
-  public boolean contains (T target)
+  public boolean contains(T target)
   // Returns true if this list contains an element e such that 
   // e.equals(target); otherwise, returns false.
   {
@@ -83,14 +79,13 @@ public class LBList<T> implements ListInterface<T>
     return found;
   }
 
-  public boolean remove (T target)
+  public boolean remove(T target)
   // Removes an element e from this list such that e.equals(target)
   // and returns true; if no such element exists, returns false.
   {
     find(target);
-    if (found)
-    {
-      if (front == location)     
+    if (found) {
+      if (front == location)
         front = front.getLink();    // remove first node
       else
         previous.setLink(location.getLink());  // remove node at location
@@ -106,25 +101,25 @@ public class LBList<T> implements ListInterface<T>
   // Returns an element e from this list such that e.equals(target);
   // if no such element exists, returns null.
   {
-    find(target);    
+    find(target);
     if (found)
       return location.getInfo();
     else
       return null;
   }
-    
+
   public boolean isEmpty()
   // Returns true if this list is empty; otherwise, returns false.
   {
-    return (numElements == 0);  
+    return (numElements == 0);
   }
 
   public boolean isFull()
   // Returns false.
   {
     return false;  // list is unbounded.
-  } 
-   
+  }
+
   public void add(int index, T element)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index > size().
@@ -132,40 +127,36 @@ public class LBList<T> implements ListInterface<T>
   // elements at that index or higher have 1 added to their index.
   {
     if ((index < 0) || (index > size()))
-      throw new IndexOutOfBoundsException("Illegal index of " + index + 
-                             " passed to LBList add method.\n");
+      throw new IndexOutOfBoundsException("Illegal index of " + index +
+          " passed to LBList add method.\n");
 
     LLNode<T> newNode = new LLNode<T>(element);
 
     if (index == 0) // add to front
     {
       if (front == null) // adding to empty list
-      { 
-        front = newNode; rear = newNode;
-      }
-      else
       {
+        front = newNode;
+        rear = newNode;
+      } else {
         newNode.setLink(front);
         front = newNode;
       }
-    }
-    else
-    if (index == size()) // add to rear
+    } else if (index == size()) // add to rear
     {
       rear.setLink(newNode);
       rear = newNode;
-    }
-    else  // add in interior part of list
+    } else  // add in interior part of list
     {
-      LLNode<T> node = front;                                   
+      LLNode<T> node = front;
       for (int i = 0; i < (index - 1); i++)
-         node = node.getLink();
+        node = node.getLink();
       newNode.setLink(node.getLink());
       node.setLink(newNode);
     }
     numElements++;
   }
-  
+
   public T set(int index, T newElement)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index >= size().
@@ -173,44 +164,44 @@ public class LBList<T> implements ListInterface<T>
   // newElement and returns the replaced element.
   {
     if ((index < 0) || (index >= size()))
-      throw new IndexOutOfBoundsException("Illegal index of " + index + 
-                             " passed to LBList set method.\n");
+      throw new IndexOutOfBoundsException("Illegal index of " + index +
+          " passed to LBList set method.\n");
 
-    LLNode<T> node = front;                                   
+    LLNode<T> node = front;
     for (int i = 0; i < index; i++)
-         node = node.getLink();
+      node = node.getLink();
     T hold = node.getInfo();
     node.setInfo(newElement);
     return hold;
   }
-    
+
   public T get(int index)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index >= size().
   // Otherwise, returns the element on this list at position index.
   {
     if ((index < 0) || (index >= size()))
-      throw new IndexOutOfBoundsException("Illegal index of " + index + 
-                             " passed to LBList set method.\n");
+      throw new IndexOutOfBoundsException("Illegal index of " + index +
+          " passed to LBList set method.\n");
 
-    LLNode<T> node = front;                                   
+    LLNode<T> node = front;
     for (int i = 0; i < index; i++)
-         node = node.getLink();
+      node = node.getLink();
     return node.getInfo();
-  }  
+  }
 
   public int indexOf(T target)
   // If this list contains an element e such that e.equals(target), 
   // then returns the index of the first such element.
   // Otherwise, returns -1.
   {
-    find(target);    
+    find(target);
     if (found)
       return targetIndex;
-    else  
+    else
       return -1;
   }
-  
+
   public T remove(int index)
   // Throws IndexOutOfBoundsException if passed an index argument
   // such that index < 0 or index >= size().
@@ -219,8 +210,8 @@ public class LBList<T> implements ListInterface<T>
   // higher than that index have 1 subtracted from their position.
   {
     if ((index < 0) || (index >= size()))
-      throw new IndexOutOfBoundsException("Illegal index of " + index + 
-                             " passed to LBList remove method.\n");
+      throw new IndexOutOfBoundsException("Illegal index of " + index +
+          " passed to LBList remove method.\n");
 
     T hold;  // holds info for return
     if (index == 0) // remove the front node
@@ -229,13 +220,11 @@ public class LBList<T> implements ListInterface<T>
       front = front.getLink();
       if (numElements == 1)   // removing only node
         rear = null;
-    }
-    else
-    {
+    } else {
       // locate previous node
-      LLNode<T> node = front;                                   
+      LLNode<T> node = front;
       for (int i = 0; i < (index - 1); i++)
-         node = node.getLink();
+        node = node.getLink();
       hold = node.getLink().getInfo();
       if (node.getLink() == rear)  // removing rear node
         rear = node;
@@ -249,8 +238,7 @@ public class LBList<T> implements ListInterface<T>
   public Iterator<T> iterator()
   // Returns an Iterator over this list.
   {
-    return new Iterator<T>()
-    {
+    return new Iterator<T>() {
       private LLNode<T> prevPos = null;  // node before node just returned
       private LLNode<T> currPos = null;  // node just returned
       private LLNode<T> nextPos = front; // next node to return
@@ -260,15 +248,15 @@ public class LBList<T> implements ListInterface<T>
       {
         return (nextPos != null);
       }
-      
+
       public T next()
       // Returns the next element in the iteration.
       // Throws NoSuchElementException - if the iteration has no more elements
-      { 
+      {
         if (!hasNext())
-          throw new IndexOutOfBoundsException("Illegal invocation of next " + 
-                             " in LBList iterator.\n");
-  
+          throw new IndexOutOfBoundsException("Illegal invocation of next " +
+              " in LBList iterator.\n");
+
         T hold = nextPos.getInfo();              // holds info for return
         if (currPos != null) prevPos = currPos;  // in case element was removed
         currPos = nextPos;
@@ -285,17 +273,14 @@ public class LBList<T> implements ListInterface<T>
       {
         if (currPos == null)  // there is no last element returned by the iterator
           return;
-        else
-        {
+        else {
           if (prevPos == null)  // removing front element
           {
             front = nextPos;
             currPos = null;
             if (front == null) // removed only element
               rear = null;
-          }
-          else
-          {
+          } else {
             prevPos.setLink(nextPos);
             currPos = null;
           }

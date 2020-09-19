@@ -17,14 +17,14 @@
 package ch04.apps;
 
 import ch04.simulation.Simulation;
-import java.awt.*;            
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.io.*;
 
-public class SimulationGUI
-{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+public class SimulationGUI {
   // input text fields
   private static JTextField minIATText;
   private static JTextField maxIATText;
@@ -36,77 +36,41 @@ public class SimulationGUI
   // status Label
   private static JLabel resultLabel;         // label for status/result info
 
-  // Define a button listener.
-  private static class ActionHandler implements ActionListener 
-  {
-    public void actionPerformed(ActionEvent event)
-    // listener for the button events
-    {
-      if (event.getActionCommand().equals("Simulate"))
-      { // Handles Evaluate event.
-        float result;
-        Simulation sim = new Simulation
-                  (Integer.parseInt(minIATText.getText()),
-                   Integer.parseInt(maxIATText.getText()),
-                   Integer.parseInt(minSTText.getText()),
-                   Integer.parseInt(maxSTText.getText()));
- 
-        sim.simulate(Integer.parseInt(numQueuesText.getText()),
-                     Integer.parseInt(numCustText.getText()));
-        result = sim.getAvgWaitTime();
-        
-        resultLabel.setText("   Average Wait Time:  " + result);
-      }
-      else
-      if (event.getActionCommand().equals("Clear"))
-      { // Handles Clear event.
-        resultLabel.setText("   RESULT  ");
-        minIATText.setText("");
-        maxIATText.setText("");
-        minSTText.setText("");
-        maxSTText.setText("");
-        numQueuesText.setText("");
-        numCustText.setText("");
-   }
-    }
-  }
-
-  public static void main(String args[]) throws IOException
-  {
+  public static void main(String[] args) throws IOException {
     // Declare/instantiate/initialize display frame.
     JFrame displayFrame = new JFrame();
     displayFrame.setTitle("Queue Simulation Program");
-    displayFrame.setSize(350,300);
+    displayFrame.setSize(350, 300);
     displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // text boxes for input
-    minIATText     = new JTextField("", 5);
-    maxIATText     = new JTextField("", 5);
-    minSTText      = new JTextField("", 5);
-    maxSTText      = new JTextField("", 5);
-    numQueuesText  = new JTextField("", 5);
-    numCustText    = new JTextField("", 5);
+    minIATText = new JTextField("", 5);
+    maxIATText = new JTextField("", 5);
+    minSTText = new JTextField("", 5);
+    maxSTText = new JTextField("", 5);
+    numQueuesText = new JTextField("", 5);
+    numCustText = new JTextField("", 5);
 
     // input/result labels
-    JLabel InArgLabel     = new JLabel("  Input Arguments:", JLabel.LEFT);
-    JLabel minIATLabel    = new JLabel("    Minimum Interarrival Time", JLabel.CENTER);
-    JLabel maxIATLabel    = new JLabel("    Maximum Interarrival Time", JLabel.CENTER);
-    JLabel minSTLabel     = new JLabel("    Minimum Service Time", JLabel.CENTER);
-    JLabel maxSTLabel     = new JLabel("    Maximum Service Time", JLabel.CENTER);
+    JLabel InArgLabel = new JLabel("  Input Arguments:", JLabel.LEFT);
+    JLabel minIATLabel = new JLabel("    Minimum Interarrival Time", JLabel.CENTER);
+    JLabel maxIATLabel = new JLabel("    Maximum Interarrival Time", JLabel.CENTER);
+    JLabel minSTLabel = new JLabel("    Minimum Service Time", JLabel.CENTER);
+    JLabel maxSTLabel = new JLabel("    Maximum Service Time", JLabel.CENTER);
     JLabel numQueuesLabel = new JLabel("    Number of Queues", JLabel.CENTER);
-    JLabel numCustLabel   = new JLabel("    Number of Customers", JLabel.CENTER);
-    
-    resultLabel    = new JLabel("   RESULT  ", JLabel.CENTER);
+    JLabel numCustLabel = new JLabel("    Number of Customers", JLabel.CENTER);
+
+    resultLabel = new JLabel("   RESULT  ", JLabel.CENTER);
 
     // input/result panels
-    JPanel minIATPanel    = new JPanel();
-    JPanel maxIATPanel    = new JPanel();
-    JPanel minSTPanel     = new JPanel();
-    JPanel maxSTPanel     = new JPanel();
+    JPanel minIATPanel = new JPanel();
+    JPanel maxIATPanel = new JPanel();
+    JPanel minSTPanel = new JPanel();
+    JPanel maxSTPanel = new JPanel();
     JPanel numQueuesPanel = new JPanel();
-    JPanel numCustPanel   = new JPanel();
-    JPanel resultPanel    = new JPanel();
-    
+    JPanel numCustPanel = new JPanel();
+    JPanel resultPanel = new JPanel();
+
     // set input/result panel layouts
     minIATPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
     maxIATPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -122,23 +86,23 @@ public class SimulationGUI
     maxIATPanel.add(maxIATLabel);
     maxIATPanel.add(maxIATText);
     minSTPanel.add(minSTLabel);
-    minSTPanel.add(minSTText); 
+    minSTPanel.add(minSTText);
     maxSTPanel.add(maxSTLabel);
     maxSTPanel.add(maxSTText);
     numQueuesPanel.add(numQueuesLabel);
     numQueuesPanel.add(numQueuesText);
     numCustPanel.add(numCustLabel);
     numCustPanel.add(numCustText);
-    
+
     resultPanel.add(resultLabel);
-    
-    // Simulate and Clear buttons    
-    JButton simulate   = new JButton("Simulate");         
-    JButton clear      = new JButton("Clear");         
+
+    // Simulate and Clear buttons
+    JButton simulate = new JButton("Simulate");
+    JButton clear = new JButton("Clear");
 
     // Button event listener
     ActionHandler action = new ActionHandler();
- 
+
     // Register button listeners.
     simulate.addActionListener(action);
     clear.addActionListener(action);
@@ -147,9 +111,9 @@ public class SimulationGUI
     Container contentPane = displayFrame.getContentPane();
     JPanel mainPanel = new JPanel();
     JPanel buttonPanel = new JPanel();
-  
+
     // Initialize main panel.
-    mainPanel.setLayout(new GridLayout(7,1));
+    mainPanel.setLayout(new GridLayout(7, 1));
     mainPanel.add(InArgLabel);
     mainPanel.add(minIATPanel);
     mainPanel.add(maxIATPanel);
@@ -159,7 +123,7 @@ public class SimulationGUI
     mainPanel.add(numCustPanel);
 
     // Initialize button panel.
-    buttonPanel.setLayout(new GridLayout(1,2));
+    buttonPanel.setLayout(new GridLayout(1, 2));
     buttonPanel.add(simulate);
     buttonPanel.add(clear);
 
@@ -167,8 +131,38 @@ public class SimulationGUI
     contentPane.add(mainPanel, "North");
     contentPane.add(buttonPanel, "Center");
     contentPane.add(resultPanel, "South");
- 
+
     displayFrame.pack();
     displayFrame.setVisible(true);
+  }
+
+  // Define a button listener.
+  private static class ActionHandler implements ActionListener {
+    public void actionPerformed(ActionEvent event)
+    // listener for the button events
+    {
+      if (event.getActionCommand().equals("Simulate")) { // Handles Evaluate event.
+        float result;
+        Simulation sim = new Simulation
+            (Integer.parseInt(minIATText.getText()),
+                Integer.parseInt(maxIATText.getText()),
+                Integer.parseInt(minSTText.getText()),
+                Integer.parseInt(maxSTText.getText()));
+
+        sim.simulate(Integer.parseInt(numQueuesText.getText()),
+            Integer.parseInt(numCustText.getText()));
+        result = sim.getAvgWaitTime();
+
+        resultLabel.setText("   Average Wait Time:  " + result);
+      } else if (event.getActionCommand().equals("Clear")) { // Handles Clear event.
+        resultLabel.setText("   RESULT  ");
+        minIATText.setText("");
+        maxIATText.setText("");
+        minSTText.setText("");
+        maxSTText.setText("");
+        numQueuesText.setText("");
+        numCustText.setText("");
+      }
+    }
   }
 }

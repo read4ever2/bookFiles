@@ -6,11 +6,10 @@
 //----------------------------------------------------------------------------
 package ch01.apps;
 
-import java.util.Random;
 import java.text.DecimalFormat;
+import java.util.Random;
 
-public class SelSortAndBinSearch
-{
+public class SelSortAndBinSearch {
   static final int SIZE = 100;   // size of array to be searched
   static int[] values = new int[SIZE];   // values to be sorted
 
@@ -48,8 +47,7 @@ public class SelSortAndBinSearch
     int value;
     DecimalFormat fmt = new DecimalFormat("000");
     System.out.println("The values array is:");
-    for (int index = 0; index < SIZE; index++)
-    {
+    for (int index = 0; index < SIZE; index++) {
       value = values[index];
       if (((index + 1) % 10) == 0)
         System.out.println(fmt.format(value));
@@ -95,13 +93,11 @@ public class SelSortAndBinSearch
   // otherwise return false
   {
     int midpoint;
-    while (first <= last)
-    {
+    while (first <= last) {
       midpoint = (first + last) / 2;
       if (target == values[midpoint])
         return true;
-      else
-      if (target > values[midpoint])  // target too high
+      else if (target > values[midpoint])  // target too high
         first = midpoint + 1;
       else                            // target too low
         last = midpoint - 1;
@@ -109,26 +105,25 @@ public class SelSortAndBinSearch
     return false;
   }
 
- 
+
   /////////////////////////////////////////////////////////////////
   //
   //  Main
 
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     initValues();
     printValues();
     System.out.println("values is sorted: " + isSorted());
-    System.out.println();    
+    System.out.println();
     selectionSort();
     printValues();
     System.out.println("values is sorted: " + isSorted());
     System.out.println();
-    
+
     System.out.println("Binary Search:");
     System.out.println("0 is in array: " + binarySearch(0, 0, SIZE - 1));
     System.out.println("1 is in array: " + binarySearch(1, 0, SIZE - 1));
-    for (int i = (SIZE/2 - 2); i <= (SIZE/2 + 2); i++)
+    for (int i = (SIZE / 2 - 2); i <= (SIZE / 2 + 2); i++)
       System.out.println(i + " is in array: " + binarySearch(i, 0, SIZE - 1));
     System.out.println(SIZE - 1 + " is in array: " + binarySearch(SIZE - 1, 0, SIZE - 1));
     System.out.println(SIZE + " is in array: " + binarySearch(SIZE, 0, SIZE - 1));

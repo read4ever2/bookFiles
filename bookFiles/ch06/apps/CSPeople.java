@@ -7,29 +7,29 @@
 //---------------------------------------------------------------------------
 package ch06.apps;
 
-import java.io.*;
-import java.util.*;
-import ch06.lists.*;
-import support.*;
+import ch06.lists.SortedABList;
+import support.FamousPerson;
 
-public class CSPeople
-{
-  public static void main(String[] args) throws IOException 
-  {
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class CSPeople {
+  public static void main(String[] args) throws IOException {
     // Get user's display preference
     Scanner scan = new Scanner(System.in);
     int choice;
     System.out.println("  1: Sorted by name? \n  2: Sorted by year of birth?");
     System.out.print("\nHow would you like to see the information > ");
     choice = scan.nextInt();
-    
+
     // Instantiate sorted list
     SortedABList<FamousPerson> people;
     if (choice == 1)
       people = new SortedABList<FamousPerson>(); // defaults to natural order
     else
       people = new SortedABList<FamousPerson>(FamousPerson.yearOfBirthComparator());
-    
+
     // Set up file reading
     FileReader fin = new FileReader("input/FamousCS.txt");
     Scanner info = new Scanner(fin);
@@ -39,17 +39,18 @@ public class CSPeople
     int year;
 
     // Read the info from the file and add it to the list
-    while (info.hasNext())      
-    {
-      fname = info.next();   lname = info.next();
-      year = info.nextInt(); fact = info.next();
+    while (info.hasNext()) {
+      fname = info.next();
+      lname = info.next();
+      year = info.nextInt();
+      fact = info.next();
       person = new FamousPerson(fname, lname, year, fact);
       people.add(person);
     }
-    
+
     // Display the list, using the advanced for loop
     System.out.println();
-    for (FamousPerson fp: people)
-       System.out.println(fp);
-  } 
+    for (FamousPerson fp : people)
+      System.out.println(fp);
+  }
 } 

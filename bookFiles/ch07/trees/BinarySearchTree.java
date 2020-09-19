@@ -7,34 +7,32 @@
 
 package ch07.trees;
 
-import java.util.*;   // Iterator, Comparator
+import ch02.stacks.LinkedStack;
+import ch04.queues.LinkedQueue;
+import support.BSTNode;
 
-import ch04.queues.*;
-import ch02.stacks.*;
-import support.BSTNode;      
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class BinarySearchTree<T> implements BSTInterface<T>
-{
+public class BinarySearchTree<T> implements BSTInterface<T> {
   protected BSTNode<T> root;      // reference to the root of this BST
   protected Comparator<T> comp;   // used for all comparisons
 
   protected boolean found;   // used by remove
 
-  public BinarySearchTree() 
+  public BinarySearchTree()
   // Precondition: T implements Comparable
   // Creates an empty BST object - uses the natural order of elements.
   {
     root = null;
-    comp = new Comparator<T>()
-    {
-       public int compare(T element1, T element2)
-       {
-         return ((Comparable)element1).compareTo(element2);
-       }
+    comp = new Comparator<T>() {
+      public int compare(T element1, T element2) {
+        return ((Comparable) element1).compareTo(element2);
+      }
     };
   }
 
-  public BinarySearchTree(Comparator<T> comp) 
+  public BinarySearchTree(Comparator<T> comp)
   // Creates an empty BST object - uses Comparator comp for order
   // of elements.
   {
@@ -59,13 +57,12 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   // otherwise returns the smallest element of the tree.
   {
     if (isEmpty())
-       return null;
-    else
-    {
-       BSTNode<T> node = root;
-       while (node.getLeft() != null)
-         node = node.getLeft();
-       return node.getInfo();
+      return null;
+    else {
+      BSTNode<T> node = root;
+      while (node.getLeft() != null)
+        node = node.getLeft();
+      return node.getInfo();
     }
   }
 
@@ -74,20 +71,19 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   // otherwise returns the largest element of the tree.
   {
     if (isEmpty())
-       return null;
-    else
-    {
-       BSTNode<T> node = root;
-       while (node.getRight() != null)
-         node = node.getRight();
-       return node.getInfo();
+      return null;
+    else {
+      BSTNode<T> node = root;
+      while (node.getRight() != null)
+        node = node.getRight();
+      return node.getInfo();
     }
   }
 
   private int recSize(BSTNode<T> node)
   // Returns the number of elements in subtree rooted at node.
   {
-    if (node == null)    
+    if (node == null)
       return 0;
     else
       return 1 + recSize(node.getLeft()) + recSize(node.getRight());
@@ -103,13 +99,11 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   // Returns the number of elements in this BST.
   {
     int count = 0;
-    if (root != null)
-    {
+    if (root != null) {
       LinkedStack<BSTNode<T>> nodeStack = new LinkedStack<BSTNode<T>>();
       BSTNode<T> currNode;
       nodeStack.push(root);
-      while (!nodeStack.isEmpty())
-      {
+      while (!nodeStack.isEmpty()) {
         currNode = nodeStack.top();
         nodeStack.pop();
         count++;
@@ -125,7 +119,7 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   private boolean recContains(T target, BSTNode<T> node)
   // Returns true if the subtree rooted at node contains info i such that 
   // comp.compare(target, i) == 0; otherwise, returns false.
- {
+  {
     if (node == null)
       return false;       // target is not found
     else if (comp.compare(target, node.getInfo()) < 0)
@@ -136,14 +130,14 @@ public class BinarySearchTree<T> implements BSTInterface<T>
       return true;        // target is found
   }
 
-  public boolean contains (T target)
+  public boolean contains(T target)
   // Returns true if this BST contains a node with info i such that 
   // comp.compare(target, i) == 0; otherwise, returns false.
   {
     return recContains(target, root);
   }
 
-  
+
   private T recGet(T target, BSTNode<T> node)
   // Returns info i from the subtree rooted at node such that 
   // comp.compare(target, i) == 0; if no such info exists, returns null.
@@ -152,8 +146,7 @@ public class BinarySearchTree<T> implements BSTInterface<T>
       return null;             // target is not found
     else if (comp.compare(target, node.getInfo()) < 0)
       return recGet(target, node.getLeft());         // get from left subtree
-    else
-    if (comp.compare(target, node.getInfo()) > 0)
+    else if (comp.compare(target, node.getInfo()) > 0)
       return recGet(target, node.getRight());        // get from right subtree
     else
       return node.getInfo();  // target is found
@@ -179,7 +172,7 @@ public class BinarySearchTree<T> implements BSTInterface<T>
     return node;
   }
 
-  public boolean add (T element)
+  public boolean add(T element)
   // Adds element to this BST. The tree retains its BST property.
   {
     root = recAdd(element, root);
@@ -235,13 +228,12 @@ public class BinarySearchTree<T> implements BSTInterface<T>
     T data;
     if (node.getLeft() == null)
       return node.getRight();
-    else if (node.getRight() == null) 
+    else if (node.getRight() == null)
       return node.getLeft();
-    else
-    {
+    else {
       data = getPredecessor(node.getLeft());
       node.setInfo(data);
-      node.setLeft(recRemove(data, node.getLeft()));  
+      node.setLeft(recRemove(data, node.getLeft()));
       return node;
     }
   }
@@ -257,15 +249,14 @@ public class BinarySearchTree<T> implements BSTInterface<T>
       node.setLeft(recRemove(target, node.getLeft()));
     else if (comp.compare(target, node.getInfo()) > 0)
       node.setRight(recRemove(target, node.getRight()));
-    else  
-    {
+    else {
       node = removeNode(node);
       found = true;
     }
     return node;
   }
 
-  public boolean remove (T target)
+  public boolean remove(T target)
   // Removes a node with info i from tree such that comp.compare(target,i) == 0
   // and returns true; if no such node exists, returns false.
   {
@@ -281,28 +272,25 @@ public class BinarySearchTree<T> implements BSTInterface<T>
     final LinkedQueue<T> infoQueue = new LinkedQueue<T>();
     if (orderType == BSTInterface.Traversal.Preorder)
       preOrder(root, infoQueue);
-    else
-    if (orderType == BSTInterface.Traversal.Inorder)
+    else if (orderType == BSTInterface.Traversal.Inorder)
       inOrder(root, infoQueue);
-    else
-    if (orderType == BSTInterface.Traversal.Postorder)
+    else if (orderType == BSTInterface.Traversal.Postorder)
       postOrder(root, infoQueue);
 
-    return new Iterator<T>()
-    {
+    return new Iterator<T>() {
       public boolean hasNext()
       // Returns true if the iteration has more elements; otherwise returns false.
       {
         return !infoQueue.isEmpty();
       }
-      
+
       public T next()
       // Returns the next element in the iteration.
       // Throws NoSuchElementException - if the iteration has no more elements
-      { 
+      {
         if (!hasNext())
-          throw new IndexOutOfBoundsException("illegal invocation of next " + 
-                                     " in BinarySearchTree iterator.\n");
+          throw new IndexOutOfBoundsException("illegal invocation of next " +
+              " in BinarySearchTree iterator.\n");
         return infoQueue.dequeue();
       }
 
@@ -310,8 +298,8 @@ public class BinarySearchTree<T> implements BSTInterface<T>
       // Throws UnsupportedOperationException.
       // Not supported. Removal from snapshot iteration is meaningless.
       {
-        throw new UnsupportedOperationException("Unsupported remove attempted on " 
-                                              + "BinarySearchTree iterator.\n");
+        throw new UnsupportedOperationException("Unsupported remove attempted on "
+            + "BinarySearchTree iterator.\n");
       }
     };
   }
@@ -319,8 +307,7 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   private void preOrder(BSTNode<T> node, LinkedQueue<T> q)
   // Enqueues the elements from the subtree rooted at node into q in preOrder.
   {
-    if (node != null)
-    {
+    if (node != null) {
       q.enqueue(node.getInfo());
       preOrder(node.getLeft(), q);
       preOrder(node.getRight(), q);
@@ -330,8 +317,7 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   private void inOrder(BSTNode<T> node, LinkedQueue<T> q)
   // Enqueues the elements from the subtree rooted at node into q in inOrder.  
   {
-    if (node != null)
-    {
+    if (node != null) {
       inOrder(node.getLeft(), q);
       q.enqueue(node.getInfo());
       inOrder(node.getRight(), q);
@@ -341,14 +327,13 @@ public class BinarySearchTree<T> implements BSTInterface<T>
   private void postOrder(BSTNode<T> node, LinkedQueue<T> q)
   // Enqueues the elements from the subtree rooted at node into q in postOrder.  
   {
-    if (node != null)
-    {
+    if (node != null) {
       postOrder(node.getLeft(), q);
       postOrder(node.getRight(), q);
       q.enqueue(node.getInfo());
     }
   }
-  
+
   public Iterator<T> iterator()
   // InOrder is the default, "natural" order.
   {

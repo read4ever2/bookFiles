@@ -18,12 +18,11 @@
 package ch04.apps;
 
 import ch04.simulation.Simulation;
+
 import java.util.Scanner;
 
-public class SimulationCLI 
-{
-  public static void main(String[] args)
-  {
+public class SimulationCLI {
+  public static void main(String[] args) {
     Scanner conIn = new Scanner(System.in);
 
     int minIAT;    // minimum interarrival time
@@ -45,26 +44,25 @@ public class SimulationCLI
     minST = conIn.nextInt();
     System.out.print("Enter maximum service time: ");
     maxST = conIn.nextInt();
-    System.out.println();      
+    System.out.println();
 
     // create object to perform simulation
     Simulation sim = new Simulation(minIAT, maxIAT, minST, maxST);
 
-    do
-    {
+    do {
       // Get next simulation instance to be processed.
       System.out.print("Enter number of queues: ");
-      numQueues = conIn.nextInt();     
+      numQueues = conIn.nextInt();
       System.out.print("Enter number of customers: ");
-      numCust = conIn.nextInt();    
+      numCust = conIn.nextInt();
       skip = conIn.nextLine();   // skip end of line
-      
+
       // run simulation and output average waiting time
       sim.simulate(numQueues, numCust);
       System.out.println("Average waiting time is " + sim.getAvgWaitTime());
 
       // Determine if there is another simulation instance to process
-      System.out.println(); 
+      System.out.println();
       System.out.print("Evaluate another simulation instance? (Y=Yes): ");
       more = conIn.nextLine();
     }

@@ -7,13 +7,12 @@
 
 package ch04.queues;
 
-public interface GlassQueueInterface<T> extends QueueInterface<T>
-{
-  public T peekFront();
+public interface GlassQueueInterface<T> extends QueueInterface<T> {
+  T peekFront();
   // If the queue is empty, returns null.
   // Otherwise returns the element at the front of this queue.
-  
-  public T peekRear();
+
+  T peekRear();
   // If the queue is empty, returns null.
   // Otherwise returns the element at the rear of this queue.
 }

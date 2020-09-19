@@ -10,23 +10,20 @@
 //---------------------------------------------------------------------------
 package ch05.collections;
 
-public class ArrayCollection<T> implements CollectionInterface<T>  
-{
+public class ArrayCollection<T> implements CollectionInterface<T> {
   protected final int DEFCAP = 100; // default capacity
-  protected T[] elements;           // array to hold collection’s elements
+  protected T[] elements;           // array to hold collectionï¿½s elements
   protected int numElements = 0;    // number of elements in this collection
 
   // set by find method
   protected boolean found;  // true if target found, otherwise false
   protected int location;   // indicates location of target if found
 
-  public ArrayCollection() 
-  {
+  public ArrayCollection() {
     elements = (T[]) new Object[DEFCAP];
   }
 
-  public ArrayCollection(int capacity) 
-  {
+  public ArrayCollection(int capacity) {
     elements = (T[]) new Object[capacity];
   }
 
@@ -39,14 +36,11 @@ public class ArrayCollection<T> implements CollectionInterface<T>
     location = 0;
     found = false;
 
-    while (location < numElements) 
-    {
-      if (elements[location].equals(target))
-      {  
+    while (location < numElements) {
+      if (elements[location].equals(target)) {
         found = true;
         return;
-      }
-      else
+      } else
         location++;
     }
   }
@@ -57,29 +51,27 @@ public class ArrayCollection<T> implements CollectionInterface<T>
   {
     if (isFull())
       return false;
-    else
-    {
+    else {
       elements[numElements] = element;
       numElements++;
       return true;
     }
   }
 
-  public boolean remove (T target)
+  public boolean remove(T target)
   // Removes an element e from this collection such that e.equals(target)
   // and returns true; if no such element exists, returns false.
   {
-    find(target);    
-    if (found)
-    {
+    find(target);
+    if (found) {
       elements[location] = elements[numElements - 1];
       elements[numElements - 1] = null;
-      numElements--;  
+      numElements--;
     }
     return found;
   }
-  
-  public boolean contains (T target)
+
+  public boolean contains(T target)
   // Returns true if this collection contains an element e such that 
   // e.equals(target); otherwise, returns false.
   {
@@ -91,13 +83,13 @@ public class ArrayCollection<T> implements CollectionInterface<T>
   // Returns an element e from this collection such that e.equals(target);
   // if no such element exists, returns null.
   {
-    find(target);    
+    find(target);
     if (found)
       return elements[location];
     else
       return null;
   }
-  
+
   public boolean isFull()
   // Returns true if this collection is full; otherwise, returns false.
   {
@@ -107,7 +99,7 @@ public class ArrayCollection<T> implements CollectionInterface<T>
   public boolean isEmpty()
   // Returns true if this collection is empty; otherwise, returns false.
   {
-    return (numElements == 0);  
+    return (numElements == 0);
   }
 
   public int size()

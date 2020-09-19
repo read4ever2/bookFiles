@@ -7,8 +7,7 @@
 
 package ch04.queues;
 
-public interface DequeInterface<T>
-{
+public interface DequeInterface<T> {
   void enqueueFront(T element) throws QueueOverflowException;
   // Throws QueueOverflowException if this queue is full;
   // otherwise, adds element to the front of this queue.
@@ -30,7 +29,7 @@ public interface DequeInterface<T>
 
   boolean isEmpty();
   // Returns true if this queue is empty; otherwise, returns false.
-  
+
   int size();
   // Returns the number of elements in this queue.
 }

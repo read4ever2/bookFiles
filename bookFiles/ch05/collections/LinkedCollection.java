@@ -10,8 +10,7 @@ package ch05.collections;
 
 import support.LLNode;
 
-public class LinkedCollection<T> implements CollectionInterface<T>  
-{
+public class LinkedCollection<T> implements CollectionInterface<T> {
   protected LLNode<T> head;       // head of the linked list
   protected int numElements = 0;  // number of elements in this collection
 
@@ -20,8 +19,7 @@ public class LinkedCollection<T> implements CollectionInterface<T>
   protected LLNode<T> location;   // node containing target, if found
   protected LLNode<T> previous;   // node preceding location
 
-  public LinkedCollection()
-  {
+  public LinkedCollection() {
     numElements = 0;
     head = null;
   }
@@ -46,15 +44,12 @@ public class LinkedCollection<T> implements CollectionInterface<T>
     location = head;
     found = false;
 
-    while (location != null) 
-    {
+    while (location != null) {
       if (location.getInfo().equals(target))  // if they match
       {
-       found = true;
-       return;
-      }
-      else
-      {
+        found = true;
+        return;
+      } else {
         previous = location;
         location = location.getLink();
       }
@@ -67,7 +62,7 @@ public class LinkedCollection<T> implements CollectionInterface<T>
     return numElements;
   }
 
-  public boolean contains (T target)
+  public boolean contains(T target)
   // Returns true if this collection contains an element e such that 
   // e.equals(target); otherwise, returns false.
   {
@@ -75,14 +70,13 @@ public class LinkedCollection<T> implements CollectionInterface<T>
     return found;
   }
 
-  public boolean remove (T target)
+  public boolean remove(T target)
   // Removes an element e from this collection such that e.equals(target)
   // and returns true; if no such element exists, returns false.
   {
     find(target);
-    if (found)
-    {
-      if (head == location)     
+    if (found) {
+      if (head == location)
         head = head.getLink();    // remove first node
       else
         previous.setLink(location.getLink());  // remove node at location
@@ -96,22 +90,22 @@ public class LinkedCollection<T> implements CollectionInterface<T>
   // Returns an element e from this collection such that e.equals(target);
   // if no such element exists, returns null.
   {
-    find(target);    
+    find(target);
     if (found)
       return location.getInfo();
     else
       return null;
   }
-    
+
   public boolean isEmpty()
   // Returns true if this collection is empty; otherwise, returns false.
   {
-    return (numElements == 0);  
+    return (numElements == 0);
   }
 
   public boolean isFull()
   // Returns true if this collection is full; otherwise, returns false.
   {
     return false;  // Linked implementation is never full
-  }  
+  }
 }

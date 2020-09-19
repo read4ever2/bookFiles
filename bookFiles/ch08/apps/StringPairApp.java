@@ -8,14 +8,15 @@
 //---------------------------------------------------------------------------
 package ch08.apps;
 
-import java.io.*;
-import java.util.*;
-import ch08.maps.*;
+import ch08.maps.ArrayListMap;
+import ch08.maps.MapInterface;
 
-public class StringPairApp
-{
-  public static void main(String[] args) throws IOException 
-  {
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class StringPairApp {
+  public static void main(String[] args) throws IOException {
     // Create map
     MapInterface<String, String> pairs = new ArrayListMap<String, String>();
 
@@ -24,35 +25,34 @@ public class StringPairApp
     FileReader fin = new FileReader(fname);
     Scanner info = new Scanner(fin);
     info.useDelimiter("[#\\n\\r]");  // delimiters are # signs, line feeds,
-                                     // carriage returns
+    // carriage returns
 
     // get information about the key and value
     String keyInfo = info.next();
     String valueInfo = info.next();
     info.nextLine();
-    
+
     // Reads the key/value pairs from the file and puts them into the map
     String key, value;
-    while (info.hasNext())      
-    {
-      key = info.next();   value = info.next();
+    while (info.hasNext()) {
+      key = info.next();
+      value = info.next();
       info.nextLine();
       pairs.put(key, value);
     }
-    
+
     // Interact with user, getting keys and displaying value
     Scanner scan = new Scanner(System.in);
-    final String STOP = "XX";     
+    final String STOP = "XX";
     key = null;
-    while (!STOP.equals(key))
-    {
+    while (!STOP.equals(key)) {
       System.out.println("\nEnter " + keyInfo + " (" + STOP + " to exit):");
-      key = scan.next(); 
+      key = scan.next();
       if (!STOP.equals(key))
         if (pairs.contains(key))
           System.out.println(valueInfo + "\t" + pairs.get(key));
         else
           System.out.println("\tNo information available.");
     }
-  } 
+  }
 }

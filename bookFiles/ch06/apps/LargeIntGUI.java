@@ -5,14 +5,15 @@
 //----------------------------------------------------------------------------
 package ch06.apps;
 
-import ch06.largeInts.*;
-import java.awt.*;            
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
+import ch06.largeInts.LargeInt;
 
-public class LargeIntGUI
-{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+public class LargeIntGUI {
   // large integers
   private static LargeInt first;
   private static LargeInt second;
@@ -31,56 +32,17 @@ public class LargeIntGUI
   private static JRadioButton minusButton;
   private static ButtonGroup operationGroup;
 
-  // Define a button listener
-  private static class ActionHandler implements ActionListener 
-  {
-    public void actionPerformed(ActionEvent event)
-    // Listener for the button events
-    {
-      if (event.getActionCommand().equals("Calculate"))
-      { // Handles Calculate event
-
-        first = new LargeInt(operandAText.getText());
-        second =  new LargeInt(operandBText.getText());
-
-        result = LargeInt.add(first, second);
-
-        String choice = operationGroup.getSelection().getActionCommand();
-        if (choice == "plus")
-        {
-          statusLabel.setText("The sum of the first and second operands is "); 
-          result = LargeInt.add(first, second);
-        }
-        else
-        {
-          statusLabel.setText("The difference of the first and second operands is "); 
-          result = LargeInt.subtract(first, second);
-        }
-        resultLabel.setText(result.toString());
-      }
-      else
-      if (event.getActionCommand().equals("Clear"))
-      { // Handles Clear event
-        statusLabel.setText("cleared");
-        resultLabel.setText("cleared");
-        operandAText.setText("");
-        operandBText.setText("");
-      }
-    }
-  }
-
-  public static void main(String args[]) throws IOException
-  {
+  public static void main(String[] args) throws IOException {
     // Declare/instantiate/initialize display frame
     JFrame displayFrame = new JFrame();
     displayFrame.setTitle("Large Integer Calculator Program");
-    displayFrame.setSize(600,250);
-//    displayFrame.setDefaultCloseOperation(3); 
-    displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    displayFrame.setSize(600, 250);
+//    displayFrame.setDefaultCloseOperation(3);
+    displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // text box for operands
-    operandAText = new JTextField( 60);
-    operandBText = new JTextField( 60);
+    operandAText = new JTextField(60);
+    operandBText = new JTextField(60);
 
     // Radio Buttons for choosing operation
     JRadioButton plusButton = new JRadioButton("   First + Second   ");
@@ -96,21 +58,21 @@ public class LargeIntGUI
     statusLabel = new JLabel("Message will go here", JLabel.CENTER);
     resultLabel = new JLabel("Result will go here", JLabel.CENTER);
 
-    // Various Labels 
-    JLabel operandALabel   = new JLabel("First Operand", JLabel.LEFT);           
-    JLabel operandBLabel   = new JLabel("Second Operand", JLabel.LEFT);           
-    JLabel operatorsLabel   = new JLabel("Choose an Operation:", JLabel.LEFT);       
+    // Various Labels
+    JLabel operandALabel = new JLabel("First Operand", JLabel.LEFT);
+    JLabel operandBLabel = new JLabel("Second Operand", JLabel.LEFT);
+    JLabel operatorsLabel = new JLabel("Choose an Operation:", JLabel.LEFT);
     JLabel blankLabel1 = new JLabel("");
     JLabel blankLabel2 = new JLabel("");
     JLabel blankLabel3 = new JLabel("");
-    
-    // Calculate and clear buttons    
-    JButton calculate   = new JButton("Calculate");         
-    JButton clear       = new JButton("Clear");        
+
+    // Calculate and clear buttons
+    JButton calculate = new JButton("Calculate");
+    JButton clear = new JButton("Clear");
 
     // Button event listener
     ActionHandler action = new ActionHandler();
- 
+
     // Register button listeners
     calculate.addActionListener(action);
     clear.addActionListener(action);
@@ -121,15 +83,15 @@ public class LargeIntGUI
     JPanel operatorPanel = new JPanel();
     JPanel resultPanel = new JPanel();
     JPanel buttonPanel = new JPanel();
- 
+
     // Initialize setup panel
-    setupPanel.setLayout(new GridLayout(6,1));
+    setupPanel.setLayout(new GridLayout(6, 1));
     setupPanel.add(operandALabel);
     setupPanel.add(operandAText);
     setupPanel.add(operandBLabel);
     setupPanel.add(operandBText);
     setupPanel.add(operatorsLabel);
-    operatorPanel.setLayout(new GridLayout(1,5));
+    operatorPanel.setLayout(new GridLayout(1, 5));
     operatorPanel.add(blankLabel1);
     operatorPanel.add(plusButton);
     operatorPanel.add(blankLabel2);
@@ -138,12 +100,12 @@ public class LargeIntGUI
     setupPanel.add(operatorPanel);
 
     // Initialize result panel
-    resultPanel.setLayout(new GridLayout(2,1));
+    resultPanel.setLayout(new GridLayout(2, 1));
     resultPanel.add(statusLabel);
     resultPanel.add(resultLabel);
 
     // Initialize button panel
-    buttonPanel.setLayout(new GridLayout(1,2));
+    buttonPanel.setLayout(new GridLayout(1, 2));
     buttonPanel.add(calculate);
     buttonPanel.add(clear);
 
@@ -154,5 +116,35 @@ public class LargeIntGUI
 
     displayFrame.pack();
     displayFrame.setVisible(true);
+  }
+
+  // Define a button listener
+  private static class ActionHandler implements ActionListener {
+    public void actionPerformed(ActionEvent event)
+    // Listener for the button events
+    {
+      if (event.getActionCommand().equals("Calculate")) { // Handles Calculate event
+
+        first = new LargeInt(operandAText.getText());
+        second = new LargeInt(operandBText.getText());
+
+        result = LargeInt.add(first, second);
+
+        String choice = operationGroup.getSelection().getActionCommand();
+        if (choice == "plus") {
+          statusLabel.setText("The sum of the first and second operands is ");
+          result = LargeInt.add(first, second);
+        } else {
+          statusLabel.setText("The difference of the first and second operands is ");
+          result = LargeInt.subtract(first, second);
+        }
+        resultLabel.setText(result.toString());
+      } else if (event.getActionCommand().equals("Clear")) { // Handles Clear event
+        statusLabel.setText("cleared");
+        resultLabel.setText("cleared");
+        operandAText.setText("");
+        operandBText.setText("");
+      }
+    }
   }
 }

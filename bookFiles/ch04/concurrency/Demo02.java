@@ -1,17 +1,16 @@
 package ch04.concurrency;
 
-import ch04.threads.*;
+import ch04.threads.Counter;
+import ch04.threads.Increase;
 
-public class Demo02
-{
-  public static void main(String[] args) throws InterruptedException
-  {
-    Counter  c = new Counter();
+public class Demo02 {
+  public static void main(String[] args) throws InterruptedException {
+    Counter c = new Counter();
     Runnable r = new Increase(c, 10000);
-    Thread   t = new Thread(r);
+    Thread t = new Thread(r);
 
     t.start();
-    
+
     System.out.println("Expected: 10000");
     System.out.println("Count is: " + c.getCount());
   }

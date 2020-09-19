@@ -1,14 +1,11 @@
 package ch09.priorityQueues;
 
-class PriQOverflowException extends RuntimeException
-{
-  public PriQOverflowException()
-  {
+class PriQOverflowException extends RuntimeException {
+  public PriQOverflowException() {
     super();
   }
 
-  public PriQOverflowException(String message)
-  {
+  public PriQOverflowException(String message) {
     super(message);
   }
 }

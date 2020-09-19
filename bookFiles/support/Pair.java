@@ -7,22 +7,20 @@
 
 package support;
 
-public class Pair<T extends Comparable<T>>
-{
+public class Pair<T extends Comparable<T>> {
   protected T first;
   protected T second;
 
-  public Pair(T f, T s)
-  {
-    first = f; second = s;
+  public Pair(T f, T s) {
+    first = f;
+    second = s;
   }
 
-  public T larger()
-  {
+  public T larger() {
     if (first.compareTo(second) > 0)
-       return first;
+      return first;
     else
-       return second;
+      return second;
   }
 }
  

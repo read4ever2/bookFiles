@@ -10,9 +10,8 @@
 
 package ch09.priorityQueues;
 
-public interface PriQueueInterface<T>
-{
-  void enqueue(T element); 
+public interface PriQueueInterface<T> {
+  void enqueue(T element);
   // Throws PriQOverflowException if this priority queue is full;
   // otherwise, adds element to this priority queue.
 
@@ -26,7 +25,7 @@ public interface PriQueueInterface<T>
 
   boolean isFull();
   // Returns true if this priority queue is full; otherwise, returns false.
- 
+
   int size();
   // Returns the number of elements in this priority queue.
 }

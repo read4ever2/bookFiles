@@ -13,19 +13,17 @@
 //---------------------------------------------------------------------------
 package ch08.maps;
 
-import java.util.*;  // Iterator, ArrayList
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ArrayListMap<K, V>  implements MapInterface<K,V>
-{
+public class ArrayListMap<K, V> implements MapInterface<K, V> {
   protected ArrayList<MapEntry<K, V>> map;
 
-  public ArrayListMap() 
-  {
+  public ArrayListMap() {
     map = new ArrayList<MapEntry<K, V>>();
   }
 
-  public ArrayListMap(int initCapacity) 
-  {
+  public ArrayListMap(int initCapacity) {
     map = new ArrayList<MapEntry<K, V>>(initCapacity);
   }
 
@@ -39,20 +37,18 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
       throw new IllegalArgumentException("Maps do not allow null keys.");
 
     MapEntry<K, V> entry = new MapEntry<K, V>(k, v);
-    
-    MapEntry<K,V> temp;
-    Iterator<MapEntry<K,V>> search = map.iterator(); // Arraylist iterator
-    while (search.hasNext())
-    {
+
+    MapEntry<K, V> temp;
+    Iterator<MapEntry<K, V>> search = map.iterator(); // Arraylist iterator
+    while (search.hasNext()) {
       temp = search.next();
-      if (temp.getKey().equals(k))
-      {
+      if (temp.getKey().equals(k)) {
         search.remove();
         map.add(entry);
         return temp.getValue(); // k found, exits method
       }
     }
-    
+
     // No entry is associated with k.
     map.add(entry);
     return null;
@@ -65,10 +61,10 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
     if (k == null)
       throw new IllegalArgumentException("Maps do not allow null keys.");
 
-    for (MapEntry<K,V> temp: map)   // uses ArrayList iterator
+    for (MapEntry<K, V> temp : map)   // uses ArrayList iterator
       if (temp.getKey().equals(k))
         return temp.getValue();     // k found, exits method
-    
+
     // No entry is associated with k.
     return null;
   }
@@ -81,18 +77,16 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
     if (k == null)
       throw new IllegalArgumentException("Maps do not allow null keys.");
 
-    MapEntry<K,V> temp;
-    Iterator<MapEntry<K,V>> search = map.iterator(); // Arraylist iterator
-    while (search.hasNext())
-    {
+    MapEntry<K, V> temp;
+    Iterator<MapEntry<K, V>> search = map.iterator(); // Arraylist iterator
+    while (search.hasNext()) {
       temp = search.next();
-      if (temp.getKey().equals(k))
-      {
+      if (temp.getKey().equals(k)) {
         search.remove();
         return temp.getValue();    // k found, exits method
       }
     }
-    
+
     // No entry is associated with k.
     return null;
   }
@@ -104,20 +98,20 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
     if (k == null)
       throw new IllegalArgumentException("Maps do not allow null keys.");
 
-    for (MapEntry<K,V> temp: map)
+    for (MapEntry<K, V> temp : map)
       if (temp.getKey().equals(k))
         return true;     // k found, exits method
-    
+
     // No entry is associated with k.
     return false;
   }
-   
+
   public boolean isEmpty()
   // Returns true if this map is empty; otherwise, returns false.
   {
     return (map.size() == 0);   // uses ArrayList size
   }
-  
+
   public boolean isFull()
   // Returns true if this map is full; otherwise, returns false.
   {
@@ -129,8 +123,8 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
   {
     return map.size();   // uses ArrayList size
   }
-  
-  public Iterator<MapEntry<K,V>> iterator()
+
+  public Iterator<MapEntry<K, V>> iterator()
   // Returns the Iterator provided by ArrayList.
   {
     return map.iterator();  // returns ArrayList iterator

@@ -1,18 +1,18 @@
 package ch05.apps;
-import ch05.collections.*;
 
-public class CollectionDriver 
-{
-  public static void main(String[] args)
-  {
+import ch05.collections.ArrayCollection;
+import ch05.collections.CollectionInterface;
+
+public class CollectionDriver {
+  public static void main(String[] args) {
     boolean result;
     CollectionInterface<String> test;
     test = new ArrayCollection<String>();
-    System.out.println("Expect 'true':\t" + test.isEmpty());   
+    System.out.println("Expect 'true':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
     result = test.add("alpha");
     System.out.println("Expect 'true':\t" + result);
-    System.out.println("Expect 'alpha':\t" + test.get("alpha"));    
+    System.out.println("Expect 'alpha':\t" + test.get("alpha"));
     result = test.contains("alpha");
     System.out.println("Expect 'true':\t" + result);
     result = test.contains("beta");
@@ -21,7 +21,7 @@ public class CollectionDriver
     result = test.add("gamma");
     result = test.add("delta");
     result = test.add("epsilon");
-    System.out.println("Expect 'false':\t" + test.isEmpty());   
+    System.out.println("Expect 'false':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
     result = test.add("pi");
     System.out.println("Expect 'true':\t" + result);
@@ -36,7 +36,7 @@ public class CollectionDriver
     System.out.println("Expect 'false':\t" + result);
     result = test.remove("delta");
     System.out.println("Expect 'true':\t" + result);
-    System.out.println("Expect 'false':\t" + test.isEmpty());   
+    System.out.println("Expect 'false':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
     result = test.contains("delta");
     System.out.println("Expect 'false':\t" + result);

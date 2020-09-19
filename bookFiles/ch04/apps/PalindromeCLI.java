@@ -8,25 +8,22 @@
 //---------------------------------------------------------------------
 package ch04.apps;
 
-import java.util.Scanner;
 import ch04.palindromes.Palindrome;
 
-public class PalindromeCLI 
-{
-  public static void main(String[] args)
-  {
+import java.util.Scanner;
+
+public class PalindromeCLI {
+  public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
 
     String candidate = null;     // string to be evaluated
     final String STOP = "X";     // indicates end of input
 
-    while (!STOP.equals(candidate))
-    {
+    while (!STOP.equals(candidate)) {
       // Get next candidate string to be processed.
       System.out.print("String (" + STOP + " to stop): ");
       candidate = scan.nextLine();
-      if (!STOP.equals(candidate))
-      {            
+      if (!STOP.equals(candidate)) {
         // Obtain and output result of palindrome testing.
         if (Palindrome.test(candidate))
           System.out.println("is a palindrome.\n");

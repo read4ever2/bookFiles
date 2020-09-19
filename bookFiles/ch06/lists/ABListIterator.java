@@ -7,29 +7,27 @@ package ch06.lists;
 
 import java.util.Iterator;
 
-public class ABListIterator<T> implements Iterator<T>
-{
-  private ABList<T> theList;
+public class ABListIterator<T> implements Iterator<T> {
+  private final ABList<T> theList;
   private int previousPos = -1;
 
-  public ABListIterator(ABList<T> target) 
-  {
+  public ABListIterator(ABList<T> target) {
     theList = target;
   }
 
   public boolean hasNext()
   // Returns true if the iteration has more elements; otherwise returns false.
   {
-    return (previousPos < (theList.size() - 1)) ;
+    return (previousPos < (theList.size() - 1));
   }
-      
+
   public T next()
   // Returns the next element in the iteration.
   // Throws NoSuchElementException - if the iteration has no more elements
-  { 
+  {
     if (!hasNext())
-      throw new IndexOutOfBoundsException("Illegal invocation of next " + 
-                         " in ABList iterator.\n");
+      throw new IndexOutOfBoundsException("Illegal invocation of next " +
+          " in ABList iterator.\n");
     previousPos++;
     return theList.elements[previousPos];
   }
@@ -41,9 +39,9 @@ public class ABListIterator<T> implements Iterator<T>
   // while the iteration is in progress in any way other than by calling this method.
   {
     for (int i = previousPos; i <= theList.numElements - 2; i++)
-      theList.elements[i] = theList.elements[i+1];
+      theList.elements[i] = theList.elements[i + 1];
     theList.elements[theList.numElements - 1] = null;
     theList.numElements--;
-    previousPos--;  
+    previousPos--;
   }
 }

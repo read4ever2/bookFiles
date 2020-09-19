@@ -6,10 +6,8 @@
 //---------------------------------------------------------------------------
 package ch04.queues;
 
-public class LinkedGlassQueue<T> extends LinkedQueue<T> implements GlassQueueInterface<T>
-{
-  public LinkedGlassQueue() 
-  {
+public class LinkedGlassQueue<T> extends LinkedQueue<T> implements GlassQueueInterface<T> {
+  public LinkedGlassQueue() {
     super();
   }
 
@@ -18,18 +16,18 @@ public class LinkedGlassQueue<T> extends LinkedQueue<T> implements GlassQueueInt
   // Otherwise returns the element at the front of this queue.
   {
     if (isEmpty())
-       return null;
-    else 
-       return front.getInfo();
+      return null;
+    else
+      return front.getInfo();
   }
-  
+
   public T peekRear()
   // If the queue is empty, returns null.
   // Otherwise returns the element at the rear of this queue.
   {
     if (isEmpty())
-       return null;
-    else 
-       return rear.getInfo();
+      return null;
+    else
+      return rear.getInfo();
   }
 }
