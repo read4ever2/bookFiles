@@ -8,8 +8,8 @@ package support;
 import java.text.DecimalFormat;
 
 public class WordFreq implements Comparable<WordFreq> {
-  DecimalFormat fmt = new DecimalFormat("00000");
   private final String word;
+  DecimalFormat fmt = new DecimalFormat("00000");
   private int freq;
 
   public WordFreq(String newWord) {

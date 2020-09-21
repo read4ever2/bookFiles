@@ -38,8 +38,8 @@ public class ABListIterator<T> implements Iterator<T> {
   // The behavior of an iterator is unspecified if the underlying list is modified 
   // while the iteration is in progress in any way other than by calling this method.
   {
-    for (int i = previousPos; i <= theList.numElements - 2; i++)
-      theList.elements[i] = theList.elements[i + 1];
+    if (theList.numElements - 1 - previousPos >= 0)
+      System.arraycopy(theList.elements, previousPos + 1, theList.elements, previousPos, theList.numElements - 1 - previousPos);
     theList.elements[theList.numElements - 1] = null;
     theList.numElements--;
     previousPos--;

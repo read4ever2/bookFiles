@@ -22,7 +22,7 @@ public class CardHandCLI {
     Card card;                       // playing card
     CardDeck deck = new CardDeck();  // deck of playing cards
 
-    ListInterface<Card> hand = new ABList<Card>(HANDSIZE); // user's hand
+    ListInterface<Card> hand = new ABList<>(HANDSIZE); // user's hand
 
     deck.shuffle();
     hand.add(deck.nextCard());  // deals 1st card and places into hand

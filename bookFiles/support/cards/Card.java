@@ -9,9 +9,18 @@ package support.cards;
 import javax.swing.*;
 
 public class Card implements Comparable<Card> {
+
   protected final Rank rank;
   protected final Suit suit;
   protected ImageIcon image;
+
+  public enum Rank {
+    Two, Three, Four, Five, Six, Seven, Eight, Nine,
+    Ten, Jack, Queen, King, Ace
+  }
+
+  public enum Suit {Club, Diamond, Heart, Spade}
+
   Card(Rank rank, Suit suit, ImageIcon image) {
     this.rank = rank;
     this.suit = suit;
@@ -58,11 +67,6 @@ public class Card implements Comparable<Card> {
     return suit + " " + rank;
   }
 
-  public enum Rank {
-    Two, Three, Four, Five, Six, Seven, Eight, Nine,
-    Ten, Jack, Queen, King, Ace
-  }
 
-  public enum Suit {Club, Diamond, Heart, Spade}
 }
  

@@ -19,7 +19,7 @@ public class CardDeck {
   protected Iterator<Card> deal;
 
   public CardDeck() {
-    deck = new ABList<Card>(NUMCARDS);
+    deck = new ABList<>(NUMCARDS);
     ImageIcon image;
     for (Card.Suit suit : Card.Suit.values())
       for (Card.Rank rank : Card.Rank.values()) {

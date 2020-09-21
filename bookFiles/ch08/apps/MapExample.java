@@ -27,13 +27,11 @@ public class MapExample {
     System.out.println("Expect 'cat':\t" + example.put('C', "cow"));
     System.out.println("Expect 'cow':\t" + example.get('C'));
     System.out.print("Expect 5 animals: ");
-    for (MapEntry<Character, String> m : example)
-      System.out.print(m.getValue() + "\t");
+    for (MapEntry<Character, String> m : example) System.out.print(m.getValue() + "\t");
 
     System.out.println("\nExpect 'pig':\t" + example.put('P', null));
     System.out.println("Expect 'dog':\t" + example.remove('D'));
     System.out.print("Expect 3 animals plus a 'null': ");
-    for (MapEntry<Character, String> m : example)
-      System.out.print(m.getValue() + "\t");
+    for (MapEntry<Character, String> m : example) System.out.print(m.getValue() + "\t");
   }
 }

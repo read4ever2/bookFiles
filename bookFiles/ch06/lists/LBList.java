@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class LBList<T> implements ListInterface<T> {
   protected LLNode<T> front;     // reference to the front of this list
   protected LLNode<T> rear;      // reference to the rear of this list
-  protected int numElements = 0; // number of elements in this list
+  protected int numElements; // number of elements in this list
 
   // set by find method
   protected boolean found;        // true if target found, else false
@@ -31,7 +31,7 @@ public class LBList<T> implements ListInterface<T> {
   public boolean add(T element)
   // Adds element to the end of this list.
   {
-    LLNode<T> newNode = new LLNode<T>(element);
+    LLNode<T> newNode = new LLNode<>(element);
     if (rear == null)
       front = newNode;
     else
@@ -42,7 +42,7 @@ public class LBList<T> implements ListInterface<T> {
   }
 
   protected void find(T target)
-  // Searches list for an occurence of an element e such that
+  // Searches list for an occurrence of an element e such that
   // e.equals(target). If successful, sets instance variables
   // found to true, location to node containing e, previous
   // to the node that links to location, and index to the index of
@@ -130,7 +130,7 @@ public class LBList<T> implements ListInterface<T> {
       throw new IndexOutOfBoundsException("Illegal index of " + index +
           " passed to LBList add method.\n");
 
-    LLNode<T> newNode = new LLNode<T>(element);
+    LLNode<T> newNode = new LLNode<>(element);
 
     if (index == 0) // add to front
     {
@@ -238,7 +238,7 @@ public class LBList<T> implements ListInterface<T> {
   public Iterator<T> iterator()
   // Returns an Iterator over this list.
   {
-    return new Iterator<T>() {
+    return new Iterator<>() {
       private LLNode<T> prevPos = null;  // node before node just returned
       private LLNode<T> currPos = null;  // node just returned
       private LLNode<T> nextPos = front; // next node to return

@@ -14,18 +14,18 @@ import ch05.collections.CollectionInterface;
 import java.util.Iterator;
 
 public interface BSTInterface<T> extends CollectionInterface<T>, Iterable<T> {
-  T min();
+  // Used to specify traversal order.
+  enum Traversal {Inorder, Preorder, Postorder}
 
-  T max();
+  T min();
   // If this BST is empty, returns null;
   // otherwise returns the smallest element of the tree.
 
-  Iterator<T> getIterator(Traversal orderType);
+  T max();
   // If this BST is empty, returns null;
   // otherwise returns the largest element of the tree.
 
-  // Used to specify traversal order.
-  enum Traversal {Inorder, Preorder, Postorder}
+  Iterator<T> getIterator(Traversal orderType);
   // Creates and returns an Iterator providing a traversal of a "snapshot" 
   // of the current tree in the order indicated by the argument.
 }

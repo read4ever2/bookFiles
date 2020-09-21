@@ -1,11 +1,11 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // StringPairApp.java          by Dale/Joyce/Weems                  Chapter 8
 //
 // Reads # separated pairs of strings from specified input file.
 // First pair of strings provides descriptive info.
 // Remaining pairs of strings stored in a map as key - value pairs.
 // Prompts user for a key and if it exists, displays the associated value.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch08.apps;
 
 import ch08.maps.ArrayListMap;
@@ -21,10 +21,10 @@ public class StringPairApp {
     MapInterface<String, String> pairs = new ArrayListMap<String, String>();
 
     // Set up file reading
-    String fname = args[0];       // input file of text
+    String fname = args[0]; // input file of text
     FileReader fin = new FileReader(fname);
     Scanner info = new Scanner(fin);
-    info.useDelimiter("[#\\n\\r]");  // delimiters are # signs, line feeds,
+    info.useDelimiter("[#\\n\\r]"); // delimiters are # signs, line feeds,
     // carriage returns
 
     // get information about the key and value
@@ -49,10 +49,8 @@ public class StringPairApp {
       System.out.println("\nEnter " + keyInfo + " (" + STOP + " to exit):");
       key = scan.next();
       if (!STOP.equals(key))
-        if (pairs.contains(key))
-          System.out.println(valueInfo + "\t" + pairs.get(key));
-        else
-          System.out.println("\tNo information available.");
+        if (pairs.contains(key)) System.out.println(valueInfo + "\t" + pairs.get(key));
+        else System.out.println("\tNo information available.");
     }
   }
 }
