@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // SerSong.java           by Dale/Joyce/Weems                  Chapter 6
 //
 // Supports song objects having a name and a duration.
 // Implements Serializable.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 package support;
 
@@ -12,9 +12,9 @@ import java.text.DecimalFormat;
 
 public class SerSong implements Serializable {
   protected String name;
-  protected int duration;    // in seconds
+  protected int duration; // in seconds
 
-  DecimalFormat fmt = new DecimalFormat("00");  // to format seconds
+  DecimalFormat fmt = new DecimalFormat("00"); // to format seconds
 
   public SerSong(String name, int seconds) {
     this.name = name;
@@ -36,8 +36,6 @@ public class SerSong implements Serializable {
 
   public String toString() {
 
-    return (name + " " + (duration / 60) + ":"
-        + fmt.format(duration % 60));
+    return (name + " " + (duration / 60) + ":" + fmt.format(duration % 60));
   }
 }
- 

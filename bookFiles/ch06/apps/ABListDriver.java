@@ -23,8 +23,7 @@ public class ABListDriver {
     System.out.println("Expect 'null':\t" + test.get("alpha"));
     System.out.println("Expect '-1':\t" + test.indexOf("alpha"));
     System.out.println("\nTrying iterator should see nothing:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
     System.out.println("Finished trying iterator.");
     System.out.println("\nTrying to generate exceptions:");
     try {
@@ -66,8 +65,7 @@ public class ABListDriver {
     System.out.println("Expect '0':\t" + test.indexOf("alpha"));
     System.out.println("Expect '-1':\t" + test.indexOf("beta"));
     System.out.println("\nTrying iterator should see alpha:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
     System.out.println("Finished trying iterator.");
     System.out.println("\nTrying to generate exceptions:");
     try {
@@ -98,8 +96,7 @@ public class ABListDriver {
     System.out.println("Expect 'null':\t" + test.get("alpha"));
     System.out.println("Expect '-1':\t" + test.indexOf("alpha"));
     System.out.println("\nTrying iterator should see nothing:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
     System.out.println("Finished trying iterator.");
     test = new ABList<String>(5);
     test.add("alpha");
@@ -150,8 +147,7 @@ public class ABListDriver {
     System.out.println("Expect '1':\t" + test.indexOf("beta"));
     System.out.println("Expect '-1':\t" + test.indexOf("gamma"));
     System.out.println("\nTrying iterator should see alpha beta:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
     System.out.println("Finished trying iterator.");
     System.out.println("\nTrying to generate exceptions:");
     try {
@@ -182,8 +178,7 @@ public class ABListDriver {
     System.out.println("Expect 'null':\t" + test.get("betaa"));
     System.out.println("Expect '-1':\t" + test.indexOf("beta"));
     System.out.println("\nTrying iterator should see alpha:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
     System.out.println("Finished trying iterator.");
     test = new ABList<String>(5);
     test.add("alpha");
@@ -266,8 +261,7 @@ public class ABListDriver {
     System.out.println("Expect alpha beta gamma epsilon pi");
     System.out.println(test);
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println("\n\nTrying iterator again and remove epsilon:");
     iter = test.iterator();
@@ -278,34 +272,28 @@ public class ABListDriver {
     }
 
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println("\n\nTesting indexing:");
     test.add(1, "One");
     test.add(5, "Five");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println("\n\nRemove 0");
     test.remove(0);
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println("\n\nRemove 4");
     test.remove(4);
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println("\n\nSet 3");
     test.set(3, "Three");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     System.out.println(test.get(3));
     System.out.println(test.indexOf("Three"));
     System.out.println(test.indexOf("nothing"));
-
 
     // Iterator remove
     test = new ABList<String>(15);
@@ -320,13 +308,11 @@ public class ABListDriver {
     while (iter.hasNext()) {
       hold = iter.next();
       System.out.println(hold);
-      if (hold.equals("1"))
-        iter.remove();
+      if (hold.equals("1")) iter.remove();
     }
 
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     test = new ABList<String>(15);
     System.out.println("\n\nTesting Iterator remove each separately");
@@ -340,14 +326,11 @@ public class ABListDriver {
     while (iter.hasNext()) {
       hold = iter.next();
       System.out.println(hold);
-      if (hold.equals("2"))
-        iter.remove();
+      if (hold.equals("2")) iter.remove();
     }
 
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
-
+    for (String x : test) System.out.println(x);
 
     test = new ABList<String>(15);
     System.out.println("\n\nTesting Iterator remove each separately");
@@ -361,14 +344,11 @@ public class ABListDriver {
     while (iter.hasNext()) {
       hold = iter.next();
       System.out.println(hold);
-      if (hold.equals("3"))
-        iter.remove();
+      if (hold.equals("3")) iter.remove();
     }
 
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
-
+    for (String x : test) System.out.println(x);
 
     test = new ABList<String>(15);
     System.out.println("\n\nTesting Iterator remove each separately");
@@ -382,14 +362,10 @@ public class ABListDriver {
     while (iter.hasNext()) {
       hold = iter.next();
       System.out.println(hold);
-      if (hold.equals("4"))
-        iter.remove();
+      if (hold.equals("4")) iter.remove();
     }
 
     System.out.println("\n\nTrying iterator:");
-    for (String x : test)
-      System.out.println(x);
-
-
+    for (String x : test) System.out.println(x);
   }
 }

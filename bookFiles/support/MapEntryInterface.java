@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // MapEntryInterface.java        by Dale/Joyce/Weems                Chapter 8
 //
 // Provides key, value pairs for use with a Map.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package support;
 
 public interface MapEntryInterface<K, V> {
@@ -15,4 +15,3 @@ public interface MapEntryInterface<K, V> {
   String toString();
   // Returns a string representing this MapEntry.
 }
- 

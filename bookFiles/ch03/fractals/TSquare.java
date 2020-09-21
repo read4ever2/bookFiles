@@ -1,10 +1,10 @@
-//*********************************************************************
+// *********************************************************************
 //  TSquare.java           By Dale/Joyce/Weems                Chapter 3
 //
 //  Creates a jpg file containing a recursive TSquare.
 //  Run argument 1: full name of target jpg file
-//  
-//********************************************************************
+//
+// ********************************************************************
 package ch03.fractals;
 
 import javax.imageio.ImageIO;
@@ -14,16 +14,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class TSquare {
-  static final int SIDE = 1000;    // image is SIDE X SIDE
+  static final int SIDE = 1000; // image is SIDE X SIDE
   static final int WHITE = Color.WHITE.getRGB();
   static final int BLACK = Color.BLACK.getRGB();
   static BufferedImage image = new BufferedImage(SIDE, SIDE, BufferedImage.TYPE_INT_RGB);
 
   private static void drawSquare(int x, int y, int s)
-  // center of square is x,y  length of side is s
-  {
-    if (s <= 0)  // base case
-      return;
+        // center of square is x,y  length of side is s
+      {
+    if (s <= 0) // base case
+    return;
     else {
       // determine corners
       int left = x - s / 2;

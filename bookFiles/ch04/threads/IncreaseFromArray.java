@@ -15,8 +15,7 @@ public class IncreaseFromArray implements Runnable {
     int hold;
     while (!q.isEmpty()) {
       hold = q.dequeue();
-      for (int i = 1; i <= hold; i++)
-        c.increment();
+      for (int i = 1; i <= hold; i++) c.increment();
     }
   }
 }

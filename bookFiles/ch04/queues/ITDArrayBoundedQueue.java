@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // ITDArrayBoundedQueue.java         by Dale/Joyce/Weems             Chapter 4
 //
 // Interactive Test Driver for the ArrayBoundedQueue class
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 package ch04.queues;
 
 import java.util.Scanner;
@@ -12,14 +12,14 @@ public class ITDArrayBoundedQueue {
     QueueInterface<String> test = new ArrayBoundedQueue<String>();
     Scanner scan = new Scanner(System.in);
 
-    String skip;       // skip end of line after reading an integer
+    String skip; // skip end of line after reading an integer
     boolean keepGoing; // flag for "choose operation" loop
-    int constructor;   // indicates user's choice of constructor
-    int operation;     // indicates user's choice of operation
+    int constructor; // indicates user's choice of constructor
+    int operation; // indicates user's choice of operation
 
-    String enqueueString = "", dequeueString = "";  // used by operations
+    String enqueueString = "", dequeueString = ""; // used by operations
 
-    // Handle test name  
+    // Handle test name
     System.out.println("What is the name of this test?");
     String testName = scan.nextLine();
     System.out.println("\nThis is test " + testName + "\n");
@@ -28,8 +28,7 @@ public class ITDArrayBoundedQueue {
     System.out.println("Choose a constructor:");
     System.out.println("1: ArrayBoundedQueue( )");
     System.out.println("2: ArrayBoundedQueue(int maxSize)");
-    if (scan.hasNextInt())
-      constructor = scan.nextInt();
+    if (scan.hasNextInt()) constructor = scan.nextInt();
     else {
       System.out.println("Error: you must enter an integer.");
       System.out.println("Terminating test.");
@@ -45,8 +44,7 @@ public class ITDArrayBoundedQueue {
       case 2:
         System.out.println("Enter a maximum size:");
         int maxSize;
-        if (scan.hasNextInt())
-          maxSize = scan.nextInt();
+        if (scan.hasNextInt()) maxSize = scan.nextInt();
         else {
           System.out.println("Error: you must enter an integer.");
           System.out.println("Terminating test.");
@@ -71,8 +69,7 @@ public class ITDArrayBoundedQueue {
       System.out.println("4: boolean isEmpty()");
       System.out.println("5: int size()");
       System.out.println("6: stop Testing");
-      if (scan.hasNextInt())
-        operation = scan.nextInt();
+      if (scan.hasNextInt()) operation = scan.nextInt();
       else {
         System.out.println("Error: you must enter an integer.");
         System.out.println("Terminating test.");
@@ -81,7 +78,7 @@ public class ITDArrayBoundedQueue {
       skip = scan.nextLine();
 
       switch (operation) {
-        case 1:  // enqueue
+        case 1: // enqueue
           System.out.println("Enter string to enqueue:");
           enqueueString = scan.nextLine();
           System.out.println("enqueue(\"" + enqueueString + "\")");
@@ -92,7 +89,7 @@ public class ITDArrayBoundedQueue {
           }
           break;
 
-        case 2:  // dequeue
+        case 2: // dequeue
           System.out.println("dequeue()");
           try {
             dequeueString = test.dequeue();
@@ -103,22 +100,22 @@ public class ITDArrayBoundedQueue {
           System.out.println("Result: " + dequeueString + " was returned.");
           break;
 
-        case 3:  // isFull
+        case 3: // isFull
           System.out.println("isFull()");
           System.out.println("Result: " + test.isFull());
           break;
 
-        case 4:  // isEmpty
+        case 4: // isEmpty
           System.out.println("isEmpty()");
           System.out.println("Result: " + test.isEmpty());
           break;
 
-        case 5:  // size
+        case 5: // size
           System.out.println("size()");
           System.out.println("Result: " + test.size());
           break;
 
-        case 6:  // stop testing
+        case 6: // stop testing
           keepGoing = false;
           break;
 

@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // Simulation.java           by Dale/Joyce/Weems              Chapter 4
 //
 // Models a sequence of customers being serviced
 // by a number of queues.
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 package ch04.simulation;
 
 import ch04.queues.LinkedGlassQueue;
@@ -13,8 +13,8 @@ import support.CustomerGenerator;
 public class Simulation {
   final int MAXTIME = Integer.MAX_VALUE;
 
-  CustomerGenerator custGen;   // a customer generator
-  float avgWaitTime = 0.0f;    // average wait time for most recent simulation
+  CustomerGenerator custGen; // a customer generator
+  float avgWaitTime = 0.0f; // average wait time for most recent simulation
 
   public Simulation(int minIAT, int maxIAT, int minST, int maxST) {
     custGen = new CustomerGenerator(minIAT, maxIAT, minST, maxST);
@@ -25,47 +25,44 @@ public class Simulation {
   }
 
   public void simulate(int numQueues, int numCustomers)
-  // Preconditions: numQueues > 0
-  //                numCustomers > 0
-  //                No time generated during simulation is > MAXTIME
-  //
-  // Simulates numCustomers customers entering and leaving the
-  // a queuing system with numQueues queues
-  {
+        // Preconditions: numQueues > 0
+        //                numCustomers > 0
+        //                No time generated during simulation is > MAXTIME
+        //
+        // Simulates numCustomers customers entering and leaving the
+        // a queuing system with numQueues queues
+      {
     // the queues
     LinkedGlassQueue<Customer>[] queues = new LinkedGlassQueue[numQueues];
 
-    Customer nextCust;      // next customer from generator
-    Customer cust;          // holds customer for temporary use
+    Customer nextCust; // next customer from generator
+    Customer cust; // holds customer for temporary use
 
-    int totWaitTime = 0;    // total wait time
-    int custInCount = 0;    // count of customers started so far
-    int custOutCount = 0;   // count of customers finished so far
+    int totWaitTime = 0; // total wait time
+    int custInCount = 0; // count of customers started so far
+    int custOutCount = 0; // count of customers finished so far
 
-    int nextArrTime;        // next arrival time
-    int nextDepTime;        // next departure time
-    int nextQueue;          // index of queue for next departure
+    int nextArrTime; // next arrival time
+    int nextDepTime; // next departure time
+    int nextQueue; // index of queue for next departure
 
-    int shortest;           // index of shortest queue
-    int shortestSize;       // size of shortest queue
-    Customer rearCust;      // customer at rear of shortest queue
-    int finishTime;         // calculated finish time for customer being enqueued
+    int shortest; // index of shortest queue
+    int shortestSize; // size of shortest queue
+    Customer rearCust; // customer at rear of shortest queue
+    int finishTime; // calculated finish time for customer being enqueued
 
     // instantiate the queues
-    for (int i = 0; i < numQueues; i++)
-      queues[i] = new LinkedGlassQueue<Customer>();
+    for (int i = 0; i < numQueues; i++) queues[i] = new LinkedGlassQueue<Customer>();
 
     // set customer generator and get first customer
     custGen.reset();
     nextCust = custGen.nextCustomer();
 
-    while (custOutCount < numCustomers)  // while still more customers to handle
+    while (custOutCount < numCustomers) // while still more customers to handle
     {
       // get next arrival time
-      if (custInCount != numCustomers)
-        nextArrTime = nextCust.getArrivalTime();
-      else
-        nextArrTime = MAXTIME;
+      if (custInCount != numCustomers) nextArrTime = nextCust.getArrivalTime();
+      else nextArrTime = MAXTIME;
 
       // get next departure time and set nextQueue
       nextDepTime = MAXTIME;
@@ -93,8 +90,7 @@ public class Simulation {
         }
 
         // determine the finish time
-        if (shortestSize == 0)
-          finishTime = nextCust.getArrivalTime() + nextCust.getServiceTime();
+        if (shortestSize == 0) finishTime = nextCust.getArrivalTime() + nextCust.getServiceTime();
         else {
           rearCust = queues[shortest].peekRear();
           finishTime = rearCust.getFinishTime() + nextCust.getServiceTime();
@@ -107,8 +103,7 @@ public class Simulation {
         custInCount = custInCount + 1;
 
         // if needed, get next customer to enqueue
-        if (custInCount < numCustomers)
-          nextCust = custGen.nextCustomer();
+        if (custInCount < numCustomers) nextCust = custGen.nextCustomer();
       } else
       // handle customer leaving
       {
@@ -116,7 +111,7 @@ public class Simulation {
         totWaitTime = totWaitTime + cust.getWaitTime();
         custOutCount = custOutCount + 1;
       }
-    }  // end while
+    } // end while
 
     avgWaitTime = totWaitTime / (float) numCustomers;
   }

@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // Pair.java            by Dale/Joyce/Weems                   Chapter 5
 //
-// Example of a class that requires client applications to use 
+// Example of a class that requires client applications to use
 // Comparable class as generic argument.
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 package support;
 
@@ -17,10 +17,7 @@ public class Pair<T extends Comparable<T>> {
   }
 
   public T larger() {
-    if (first.compareTo(second) > 0)
-      return first;
-    else
-      return second;
+    if (first.compareTo(second) > 0) return first;
+    else return second;
   }
 }
- 

@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // ReverseStrings2.java       by Dale/Joyce/Weems              Chapter 2
 //
-// Sample use of the library Stack. 
+// Sample use of the library Stack.
 // Outputs strings in reverse order of entry.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch02.apps;
 
 import java.util.Scanner;

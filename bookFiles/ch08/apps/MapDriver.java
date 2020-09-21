@@ -10,12 +10,12 @@ public class MapDriver {
     MapInterface<String, String> test;
     test = new ArrayListMap<String, String>();
     System.out.println("Expect 'true':\t" + test.isEmpty());
-    System.out.println("Expect '0':\t" + test.size());  
+    System.out.println("Expect '0':\t" + test.size());
 
-/*
-String s = null;
-test.put(s,"value");
-*/
+    /*
+    String s = null;
+    test.put(s,"value");
+    */
 
     test.put("s", null);
     System.out.println("Expect 'null':\t" + test.get("s"));
@@ -57,8 +57,6 @@ test.put(s,"value");
     System.out.println("Expect '4':\t" + test.size());
 
     System.out.println("\nThe Map is:\n");
-    for (MapEntry<String, String> m : test)
-      System.out.println(m + "\n");
-
+    for (MapEntry<String, String> m : test) System.out.println(m + "\n");
   }
 }

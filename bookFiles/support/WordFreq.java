@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // WordFreq.java              by Dale/Joyce/Weems                   Chapter 7
 //
 // Defines word-frequency pairs
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package support;
 
 import java.text.DecimalFormat;
@@ -37,4 +37,3 @@ public class WordFreq implements Comparable<WordFreq> {
     return (fmt.format(freq) + " " + word);
   }
 }
- 

@@ -70,6 +70,5 @@ public class CollectionDriver2 {
     result = test.add("hippo");
     result = test.add("hippo");
     System.out.println(test);
-
   }
 }

@@ -7,9 +7,8 @@ public class IncDate extends Date {
   }
 
   public void increment()
-  // Increments this IncDate to represent the next day.
-  {
+        // Increments this IncDate to represent the next day.
+      {
     // increment algorithm goes here
   }
 }
- 

@@ -1,10 +1,10 @@
-//*********************************************************************
+// *********************************************************************
 //
 //  ImageGen01.java         By Dale/Joyce/Weems               Chapter 1
 //
-//  Demonstrates image generation 
-//  
-//*********************************************************************
+//  Demonstrates image generation
+//
+// *********************************************************************
 package ch01.apps;
 
 import javax.imageio.ImageIO;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ImageGen02 {
   public static void main(String[] args) throws IOException {
-    String fileOut = args[0];   // destination file
+    String fileOut = args[0]; // destination file
 
     // create BufferedImage of SIZE and TYPE
     final int SIDE = 1024;
@@ -23,14 +23,14 @@ public class ImageGen02 {
     BufferedImage image = new BufferedImage(SIDE, SIDE, TYPE);
 
     final int LIMIT = 255; // limit of RGB values
-    int c;                 // specific value for R G and B
+    int c; // specific value for R G and B
     Color color;
 
     for (int i = 0; i < SIDE; i++)
       for (int j = 0; j < SIDE; j++) {
         c = (i + j) % LIMIT;
-        color = new Color(c, c, c);  // creates 'gray' values
-        image.setRGB(i, j, color.getRGB());  // saves pixel
+        color = new Color(c, c, c); // creates 'gray' values
+        image.setRGB(i, j, color.getRGB()); // saves pixel
       }
 
     File outputfile = new File(fileOut);

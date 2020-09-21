@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // UseSafeDate.java          by Dale/Joyce/Weems               Chapter 1
 //
-// Example of catching exceptions thrown by SafeDate class 
-//----------------------------------------------------------------------
+// Example of catching exceptions thrown by SafeDate class
+// ----------------------------------------------------------------------
 
 package ch01.apps;
 

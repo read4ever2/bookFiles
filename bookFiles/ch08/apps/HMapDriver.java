@@ -9,15 +9,14 @@ public class HMapDriver {
     HMap<String, String> test;
     test = new HMap<String, String>(10, 0.75);
 
-/*
-String s = null;
-test.put(s,"value");
-test.put("s",null);
-System.out.println("Expect 'null':\t" + test.get("s"));
-System.out.println("Expect 'true':\t" + test.contains("s"));
-test = new ArrayListMap<String, String>();
-*/
-
+    /*
+    String s = null;
+    test.put(s,"value");
+    test.put("s",null);
+    System.out.println("Expect 'null':\t" + test.get("s"));
+    System.out.println("Expect 'true':\t" + test.contains("s"));
+    test = new ArrayListMap<String, String>();
+    */
 
     System.out.println("Expect 'true':\t" + test.isEmpty());
     System.out.println("Expect '0':\t" + test.size());
@@ -29,7 +28,6 @@ test = new ArrayListMap<String, String>();
     System.out.println("Expect 'One':\t" + test.put("1", "One"));
     System.out.println("Expect 'false':\t" + test.isEmpty());
     System.out.println("Expect '1':\t" + test.size());
-
 
     test.put("2", "Two");
     test.put("3", "Three");
@@ -52,7 +50,6 @@ test = new ArrayListMap<String, String>();
     System.out.println("Expect 'true':\t" + test.contains("d"));
     System.out.println("Expect 'false':\t" + test.contains("e"));
 
-
     System.out.println("Expect 'One':\t" + test.get("1"));
     System.out.println("Expect 'One':\t" + test.get("1"));
     System.out.println("Expect 'Two':\t" + test.get("2"));
@@ -66,8 +63,7 @@ test = new ArrayListMap<String, String>();
     System.out.println(test);
 
     System.out.println("\nThe Map is:\n");
-    for (MapEntry<String, String> m : test)
-      System.out.println(m + "\n");
+    for (MapEntry<String, String> m : test) System.out.println(m + "\n");
 
     System.out.println(1);
     test.put("f", "f");
@@ -75,10 +71,7 @@ test = new ArrayListMap<String, String>();
     System.out.println(test);
     System.out.println(3);
     System.out.println("\nThe Map is:\n");
-    for (MapEntry<String, String> m : test)
-      System.out.println(m + "\n");
+    for (MapEntry<String, String> m : test) System.out.println(m + "\n");
     System.out.println(4);
-
-
   }
 }

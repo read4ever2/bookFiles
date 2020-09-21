@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // CardHandCLI.java        by Dale/Joyce/Weems                Chapter 6
 //
 // Allows user to organize a hand of playing cards.
 // Uses a command line interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch06.apps;
 
 import ch06.lists.ABList;
@@ -19,13 +19,13 @@ public class CardHandCLI {
     final int HANDSIZE = 5;
     int slot;
 
-    Card card;                       // playing card
-    CardDeck deck = new CardDeck();  // deck of playing cards
+    Card card; // playing card
+    CardDeck deck = new CardDeck(); // deck of playing cards
 
     ListInterface<Card> hand = new ABList<>(HANDSIZE); // user's hand
 
     deck.shuffle();
-    hand.add(deck.nextCard());  // deals 1st card and places into hand
+    hand.add(deck.nextCard()); // deals 1st card and places into hand
 
     for (int i = 1; i < HANDSIZE; i++) {
       System.out.println("\nYour hand so far:");
@@ -43,7 +43,6 @@ public class CardHandCLI {
     }
 
     System.out.println("\nYour final hand is:");
-    for (Card c : hand)
-      System.out.println("  " + c);
+    for (Card c : hand) System.out.println("  " + c);
   }
 }

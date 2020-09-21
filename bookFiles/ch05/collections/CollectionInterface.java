@@ -1,11 +1,11 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // CollectionInterface.java        by Dale/Joyce/Weems               Chapter 5
 //
 // Interface for a class that implements a collection of T.
 // A collection allows addition, removal, and access of elements.
 //
 // Nullelements are not allowed. Duplicate elements are allowed.
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 package ch05.collections;
 

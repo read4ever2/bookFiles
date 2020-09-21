@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // QueueInterface.java           by Dale/Joyce/Weems                 Chapter 4
 //
 // Interface for a class that implements a queue of T.
 // A queue is a "first in, first out" structure.
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 package ch04.queues;
 
@@ -25,7 +25,3 @@ public interface QueueInterface<T> {
   int size();
   // Returns the number of elements in this queue.
 }
-
-
-
-

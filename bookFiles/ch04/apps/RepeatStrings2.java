@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // RepeatStrings2.java        by Dale/Joyce/Weems              Chapter 4
 //
-// Sample use of the library ArrayDeque. 
+// Sample use of the library ArrayDeque.
 // Outputs strings in same order of entry.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch04.apps;
 
 import java.util.ArrayDeque;

@@ -1,10 +1,10 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // CSPeople.java            by Dale/Joyce/Weems                     Chapter 6
 //
-// Reads information about famous computer scientists from the file 
-// input/FamousCS.txt. Allows user to indicate if they wish to see the list 
+// Reads information about famous computer scientists from the file
+// input/FamousCS.txt. Allows user to indicate if they wish to see the list
 // sorted by name or by year of birth.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch06.apps;
 
 import ch06.lists.SortedABList;
@@ -25,15 +25,13 @@ public class CSPeople {
 
     // Instantiate sorted list
     SortedABList<FamousPerson> people;
-    if (choice == 1)
-      people = new SortedABList<FamousPerson>(); // defaults to natural order
-    else
-      people = new SortedABList<FamousPerson>(FamousPerson.yearOfBirthComparator());
+    if (choice == 1) people = new SortedABList<FamousPerson>(); // defaults to natural order
+    else people = new SortedABList<FamousPerson>(FamousPerson.yearOfBirthComparator());
 
     // Set up file reading
     FileReader fin = new FileReader("input/FamousCS.txt");
     Scanner info = new Scanner(fin);
-    info.useDelimiter("[,\\n]");  // delimiters are commas, line feeds
+    info.useDelimiter("[,\\n]"); // delimiters are commas, line feeds
     FamousPerson person;
     String fname, lname, fact;
     int year;
@@ -50,7 +48,6 @@ public class CSPeople {
 
     // Display the list, using the advanced for loop
     System.out.println();
-    for (FamousPerson fp : people)
-      System.out.println(fp);
+    for (FamousPerson fp : people) System.out.println(fp);
   }
-} 
+}

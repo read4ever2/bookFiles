@@ -1,10 +1,10 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // BalancedGUI.java         by Dale/Joyce/Weems                Chapter 2
 //
 // Checks for balanced grouping symbols.
 // Special symbol types are (), [], and {}.
 // Uses a graphical user interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch02.apps;
 
 import ch02.balanced.Balanced;
@@ -18,10 +18,10 @@ import java.io.IOException;
 
 public class BalancedGUI {
   // text field
-  private static JTextField expressionText;  // text field for expression
+  private static JTextField expressionText; // text field for expression
 
   // status Label
-  private static JLabel statusLabel;         // label for status/result info
+  private static JLabel statusLabel; // label for status/result info
 
   public static void main(String[] args) throws IOException {
     // Declare/instantiate/initialize display frame.
@@ -74,8 +74,8 @@ public class BalancedGUI {
   // Define a button listener.
   private static class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent event)
-    // listener for the button events
-    {
+          // listener for the button events
+        {
       if (event.getActionCommand().equals("Evaluate")) { // Handles Evaluate event.
 
         // Instantiate new Balanced class with grouping symbols.
@@ -84,12 +84,9 @@ public class BalancedGUI {
         int result; // 0 = balanced, 1 = unbalanced, 2 = premature end
 
         result = bal.test(expressionText.getText());
-        if (result == 1)
-          statusLabel.setText("Result = Unbalanced \n");
-        else if (result == 2)
-          statusLabel.setText("Result = Premature end of expression \n");
-        else
-          statusLabel.setText("Result = Balanced \n");
+        if (result == 1) statusLabel.setText("Result = Unbalanced \n");
+        else if (result == 2) statusLabel.setText("Result = Premature end of expression \n");
+        else statusLabel.setText("Result = Balanced \n");
       } else if (event.getActionCommand().equals("Clear")) { // Handles Clear event.
         statusLabel.setText("cleared");
         expressionText.setText("");

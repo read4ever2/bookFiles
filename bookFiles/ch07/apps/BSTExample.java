@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // BSTExample.java          by Dale/Joyce/Weems                    Chapter 7
 //
 // Creates a BST to match Figure 7.8 and demonstrates use of iteration.
-//--------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 package ch07.apps;
 
 import ch07.trees.BSTInterface;
@@ -30,39 +30,33 @@ public class BSTExample {
     // Inorder
     System.out.print("Inorder:   ");
     iter = example.getIterator(BSTInterface.Traversal.Inorder);
-    while (iter.hasNext())
-      System.out.print(iter.next());
+    while (iter.hasNext()) System.out.print(iter.next());
 
     // Preorder
     System.out.print("\nPreorder:  ");
     iter = example.getIterator(BSTInterface.Traversal.Preorder);
-    while (iter.hasNext())
-      System.out.print(iter.next());
+    while (iter.hasNext()) System.out.print(iter.next());
 
     // Postorder
     System.out.print("\nPostorder: ");
     iter = example.getIterator(BSTInterface.Traversal.Postorder);
-    while (iter.hasNext())
-      System.out.print(iter.next());
+    while (iter.hasNext()) System.out.print(iter.next());
 
     // Inorder again
     System.out.print("\nInorder:   ");
-    for (Character ch : example)
-      System.out.print(ch);
-
-    // Inorder again
-    System.out.print("\nInorder:   ");
-    iter = example.getIterator(BSTInterface.Traversal.Inorder);
-    example.add('A');
-    example.add('A');
-    example.add('A');
-    while (iter.hasNext())
-      System.out.print(iter.next());
+    for (Character ch : example) System.out.print(ch);
 
     // Inorder again
     System.out.print("\nInorder:   ");
     iter = example.getIterator(BSTInterface.Traversal.Inorder);
-    while (iter.hasNext())
-      System.out.print(iter.next());
+    example.add('A');
+    example.add('A');
+    example.add('A');
+    while (iter.hasNext()) System.out.print(iter.next());
+
+    // Inorder again
+    System.out.print("\nInorder:   ");
+    iter = example.getIterator(BSTInterface.Traversal.Inorder);
+    while (iter.hasNext()) System.out.print(iter.next());
   }
 }

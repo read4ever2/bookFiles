@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 // HigherLower.java         by Dale/Joyce/Weems              Chapter 6
 //
-// Plays Higher or Lower? with user through command line interface. 
-//--------------------------------------------------------------------
+// Plays Higher or Lower? with user through command line interface.
+// --------------------------------------------------------------------
 package ch06.apps;
 
 import support.cards.Card;
@@ -29,16 +29,13 @@ public class HigherLower {
     System.out.print("Higher (H) or Lower (L)? > ");
     reply = scan.nextLine().charAt(0);
 
-    // Second card    
+    // Second card
     card2 = deck.nextCard();
     System.out.println("\nSecond Card: " + card2);
 
-    // Determine and display results    
-    if ((card2.compareTo(card1) > 0) && (reply == 'H'))
-      System.out.println("Correct");
-    else if ((card2.compareTo(card1) < 0) && (reply == 'L'))
-      System.out.println("Correct");
-    else
-      System.out.println("Incorrect");
+    // Determine and display results
+    if ((card2.compareTo(card1) > 0) && (reply == 'H')) System.out.println("Correct");
+    else if ((card2.compareTo(card1) < 0) && (reply == 'L')) System.out.println("Correct");
+    else System.out.println("Incorrect");
   }
 }

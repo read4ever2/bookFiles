@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // LargeIntGUI.java             by Dale/Joyce/Weems                  Chapter 6
 //
 // Evaluates addition and subtraction of large integers
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 package ch06.apps;
 
 import ch06.largeInts.LargeInt;
@@ -20,12 +20,12 @@ public class LargeIntGUI {
   private static LargeInt result;
 
   // text field
-  private static JTextField operandAText;  // text field for operand A
-  private static JTextField operandBText;  // text field for operand B
+  private static JTextField operandAText; // text field for operand A
+  private static JTextField operandBText; // text field for operand B
 
   // status Label
-  private static JLabel statusLabel;         // Label for status info
-  private static JLabel resultLabel;         // Label for status info
+  private static JLabel statusLabel; // Label for status info
+  private static JLabel resultLabel; // Label for status info
 
   // Radio Buttons and Group for choosing operation
   private static JRadioButton plusButton;
@@ -37,7 +37,7 @@ public class LargeIntGUI {
     JFrame displayFrame = new JFrame();
     displayFrame.setTitle("Large Integer Calculator Program");
     displayFrame.setSize(600, 250);
-//    displayFrame.setDefaultCloseOperation(3);
+    //    displayFrame.setDefaultCloseOperation(3);
     displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // text box for operands
@@ -121,8 +121,8 @@ public class LargeIntGUI {
   // Define a button listener
   private static class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent event)
-    // Listener for the button events
-    {
+          // Listener for the button events
+        {
       if (event.getActionCommand().equals("Calculate")) { // Handles Calculate event
 
         first = new LargeInt(operandAText.getText());

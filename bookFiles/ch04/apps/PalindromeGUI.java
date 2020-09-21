@@ -1,11 +1,11 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // PalindromeGUI.java       by Dale/Joyce/Weems               Chapter 4
 //
 // Checks for strings that are palidromes.
 // Input consists of a sequence of strings.
 // Output consists of whether the input string is a palindrome.
 // Interacts with the user through a graphical user interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch04.apps;
 
 import ch04.palindromes.Palindrome;
@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
 
 public class PalindromeGUI {
   // text field
-  private static JTextField expressionText;  // text field for postfix expression
+  private static JTextField expressionText; // text field for postfix expression
 
   // status Label
-  private static JLabel statusLabel;         // label for status/result info
+  private static JLabel statusLabel; // label for status/result info
 
   public static void main(String[] args) {
     // Declare/instantiate/initialize display frame.
@@ -74,14 +74,12 @@ public class PalindromeGUI {
   // Define a button listener.
   private static class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent event)
-    // listener for the button events
-    {
+          // listener for the button events
+        {
       if (event.getActionCommand().equals("Evaluate")) { // Handles Evaluate event.
         int result = 0;
-        if (Palindrome.test(expressionText.getText()))
-          statusLabel.setText("is a palindrome.\n");
-        else
-          statusLabel.setText("is NOT a palindrome.\n");
+        if (Palindrome.test(expressionText.getText())) statusLabel.setText("is a palindrome.\n");
+        else statusLabel.setText("is NOT a palindrome.\n");
       } else if (event.getActionCommand().equals("Clear")) { // Handles Clear event.
         statusLabel.setText("cleared");
         expressionText.setText("");

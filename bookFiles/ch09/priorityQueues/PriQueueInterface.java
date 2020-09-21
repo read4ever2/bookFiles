@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // PriQueueInterface.java          by Dale/Joyce/Weems               Chapter 9
 //
 // Interface for a class that implements a priority queue of T.
@@ -6,7 +6,7 @@
 // highest priority.
 //
 // Null elements are not allowed. Duplicate elements are allowed.
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 package ch09.priorityQueues;
 
@@ -17,7 +17,7 @@ public interface PriQueueInterface<T> {
 
   T dequeue();
   // Throws PriQUnderflowException if this priority queue is empty;
-  // otherwise, removes element with highest priority from this 
+  // otherwise, removes element with highest priority from this
   // priority queue and returns it.
 
   boolean isEmpty();
@@ -29,4 +29,3 @@ public interface PriQueueInterface<T> {
   int size();
   // Returns the number of elements in this priority queue.
 }
-

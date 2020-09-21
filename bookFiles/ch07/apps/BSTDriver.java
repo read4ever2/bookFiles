@@ -27,11 +27,11 @@ public class BSTDriver {
     System.out.println("Expect 'null':\t" + test.get("alpha"));
     System.out.println("Expect 'null':\t" + test.min());
     System.out.println("Expect 'null':\t" + test.max());
-/*    System.out.println("\nTrying iterator should see nothing:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*    System.out.println("\nTrying iterator should see nothing:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
 
     // One element tree
     System.out.println("\nTesting One Element Tree");
@@ -47,12 +47,11 @@ public class BSTDriver {
     System.out.println("Expect 'alpha':\t" + test.min());
     System.out.println("Expect 'alpha':\t" + test.max());
 
-
-/*    System.out.println("\nTrying iterator should see alpha:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*    System.out.println("\nTrying iterator should see alpha:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
     System.out.println("Expect 'true':\t" + test.remove("alpha"));
     System.out.println("Expect 'true':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
@@ -62,16 +61,16 @@ public class BSTDriver {
     System.out.println("Expect 'null':\t" + test.min());
     System.out.println("Expect 'null':\t" + test.max());
 
-/*    System.out.println("\nTrying iterator should see nothing:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*    System.out.println("\nTrying iterator should see nothing:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
 
     // Two element tree
     System.out.println("\n\nTesting Two Element BSTs");
     test = new BinarySearchTree<String>();
-//    test = new BinarySearchTree<String>(comp);
+    //    test = new BinarySearchTree<String>(comp);
 
     test.add("beta");
     test.add("alpha");
@@ -88,12 +87,12 @@ public class BSTDriver {
     System.out.println("Expect 'alpha':\t" + test.min());
     System.out.println("Expect 'beta':\t" + test.max());
 
-/*
-    System.out.println("\nTrying iterator should see alpha beta:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*
+        System.out.println("\nTrying iterator should see alpha beta:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
     System.out.println("Expect 'true':\t" + test.remove("beta"));
     System.out.println("Expect 'false':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
@@ -101,15 +100,15 @@ public class BSTDriver {
     System.out.println("Expect 'false':\t" + test.contains("beta"));
     System.out.println("Expect 'null':\t" + test.get("beta"));
 
-/*
-    System.out.println("\nTrying iterator should see alpha:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*
+        System.out.println("\nTrying iterator should see alpha:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
 
     test = new BinarySearchTree<String>();
-//    test = new BinarySearchTree<String>(comp);
+    //    test = new BinarySearchTree<String>(comp);
 
     test.add("beta");
     test.add("alpha");
@@ -126,19 +125,18 @@ public class BSTDriver {
     System.out.println("Expect 'alpha':\t" + test.min());
     System.out.println("Expect 'beta':\t" + test.max());
 
-/*
-    System.out.println("\nTrying iterator should see alpha beta:");
-    for (String x: test)
-       System.out.println(x);
-    System.out.println("Finished trying iterator.");
-*/
+    /*
+        System.out.println("\nTrying iterator should see alpha beta:");
+        for (String x: test)
+           System.out.println(x);
+        System.out.println("Finished trying iterator.");
+    */
     System.out.println("Expect 'true':\t" + test.remove("beta"));
     System.out.println("Expect 'false':\t" + test.isEmpty());
     System.out.println("Expect 'false':\t" + test.isFull());
     System.out.println("Expect '1':\t" + test.size());
     System.out.println("Expect 'false':\t" + test.contains("beta"));
     System.out.println("Expect 'null':\t" + test.get("beta"));
-
 
     // Multi element tree
     test = new BinarySearchTree<String>();
@@ -175,7 +173,6 @@ public class BSTDriver {
     System.out.println("Expect '5':\t" + test.size());
     System.out.println("Expect 'alpha':\t" + test.min());
     System.out.println("Expect 'pi':\t" + test.max());
-
 
     test.add("aaa");
     test.add("comma");
@@ -248,16 +245,14 @@ public class BSTDriver {
     test.add("8");
     test.add("4");
 
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
 
     // Multi element tree
-//    test = new BinarySearchTree<String>(new ReverseStringComparator());
-//    System.out.println("\n\nTesting Multi Element Trees Reversed");
+    //    test = new BinarySearchTree<String>(new ReverseStringComparator());
+    //    System.out.println("\n\nTesting Multi Element Trees Reversed");
 
     test = new BinarySearchTree<String>();
     System.out.println("\n\nTesting Multi Element Trees");
-
 
     result = test.add("alpha");
     System.out.println("Expect 'true':\t" + result);
@@ -290,7 +285,6 @@ public class BSTDriver {
     System.out.println("Expect '5':\t" + test.size());
     System.out.println("Expect 'alpha':\t" + test.min());
     System.out.println("Expect 'pi':\t" + test.max());
-
 
     test.add("aaa");
     test.add("comma");
@@ -363,7 +357,6 @@ public class BSTDriver {
     test.add("8");
     test.add("4");
 
-    for (String x : test)
-      System.out.println(x);
+    for (String x : test) System.out.println(x);
   }
 }

@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // SimGUI.java             by Dale/Joyce/Weems                 Chapter 5
 //
 // Simulates customers waiting in queues. Customers always enter
@@ -13,7 +13,7 @@
 //
 // Output is the average waiting time for a customer.
 // Uses a graphical user interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch04.apps;
 
 import ch04.simulation.Simulation;
@@ -34,7 +34,7 @@ public class SimulationGUI {
   private static JTextField numCustText;
 
   // status Label
-  private static JLabel resultLabel;         // label for status/result info
+  private static JLabel resultLabel; // label for status/result info
 
   public static void main(String[] args) throws IOException {
     // Declare/instantiate/initialize display frame.
@@ -139,18 +139,19 @@ public class SimulationGUI {
   // Define a button listener.
   private static class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent event)
-    // listener for the button events
-    {
+          // listener for the button events
+        {
       if (event.getActionCommand().equals("Simulate")) { // Handles Evaluate event.
         float result;
-        Simulation sim = new Simulation
-            (Integer.parseInt(minIATText.getText()),
+        Simulation sim =
+            new Simulation(
+                Integer.parseInt(minIATText.getText()),
                 Integer.parseInt(maxIATText.getText()),
                 Integer.parseInt(minSTText.getText()),
                 Integer.parseInt(maxSTText.getText()));
 
-        sim.simulate(Integer.parseInt(numQueuesText.getText()),
-            Integer.parseInt(numCustText.getText()));
+        sim.simulate(
+            Integer.parseInt(numQueuesText.getText()), Integer.parseInt(numCustText.getText()));
         result = sim.getAvgWaitTime();
 
         resultLabel.setText("   Average Wait Time:  " + result);

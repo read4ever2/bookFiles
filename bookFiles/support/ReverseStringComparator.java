@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // ReverseStringComparator.java     by Dale/Joyce/Weems       Chapter 6
 //
 // Comparator reverse natural ordering of strings.
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 package support;
 
@@ -13,4 +13,3 @@ public class ReverseStringComparator implements Comparator<String> {
     return s2.compareTo(s1);
   }
 }
- 

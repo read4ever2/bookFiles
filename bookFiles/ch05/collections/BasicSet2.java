@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // BasicSet2.java             by Dale/Joyce/Weems                   Chapter 5
 //
 // Implements the CollectionInterface by wrapping a LinkedCollection.
@@ -6,7 +6,7 @@
 //
 // Null elements are not allowed.
 // One constructor is provided, one that creates an empty collection.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch05.collections;
 
 public class BasicSet2<T> implements CollectionInterface<T> {
@@ -17,14 +17,13 @@ public class BasicSet2<T> implements CollectionInterface<T> {
   }
 
   public boolean add(T element)
-  // If element is not already contained in this collection adds element to 
-  // this collection and returns true; otherwise returns false.
-  {
+        // If element is not already contained in this collection adds element to
+        // this collection and returns true; otherwise returns false.
+      {
     if (!this.contains(element)) {
       set.add(element);
       return true;
-    } else
-      return false;
+    } else return false;
   }
 
   public int size() {

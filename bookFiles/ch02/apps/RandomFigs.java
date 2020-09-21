@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // RandomFigs.java          by Dale/Joyce/Weems                Chapter 2
 //
 // Demonstrates polymorphism.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch02.apps;
 
 import ch02.figures.Circle;
@@ -37,8 +37,7 @@ public class RandomFigs {
     }
 
     // sum areas
-    for (int i = 0; i < COUNT; i++)
-      totalArea = totalArea + figures[i].area();
+    for (int i = 0; i < COUNT; i++) totalArea = totalArea + figures[i].area();
 
     System.out.println("\nTotal: " + df.format(totalArea));
   }

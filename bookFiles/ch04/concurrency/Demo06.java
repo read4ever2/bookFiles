@@ -12,8 +12,7 @@ public class Demo06 {
     QueueInterface<Integer> q;
     q = new ArrayBoundedQueue<Integer>(LIMIT);
 
-    for (int i = 1; i <= LIMIT; i++)
-      q.enqueue(i);
+    for (int i = 1; i <= LIMIT; i++) q.enqueue(i);
 
     Runnable r1 = new IncreaseFromArray(c, q);
     Runnable r2 = new IncreaseFromArray(c, q);

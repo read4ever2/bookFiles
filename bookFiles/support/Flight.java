@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // Flights.java           by Dale/Joyce/Weems                  Chapter 9
 //
 // Supports flight objects having a "from" vertex, a "to" vertex, and a
 // distance. Allows flights to be compared based on their distances.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 package support;
 
@@ -43,7 +43,7 @@ public class Flight implements Comparable<Flight> {
   }
 
   public int compareTo(Flight other) {
-    return (other.distance - this.distance); // shorter is better 
+    return (other.distance - this.distance); // shorter is better
   }
 
   @Override
@@ -51,4 +51,3 @@ public class Flight implements Comparable<Flight> {
     return (fromVertex + "    " + toVertex + "    " + distance);
   }
 }
- 

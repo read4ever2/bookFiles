@@ -1,4 +1,4 @@
-//*********************************************************************
+// *********************************************************************
 //  TSquareGray.java         By Dale/Joyce/Weems              Chapter 3
 //
 //  Creates a jpg file containing a recursive TSquare.
@@ -6,8 +6,8 @@
 //  Run argument 1: full name of target jpg file
 //  Run argument 2: int indicated inner threshold
 //  Run argument 3: int indicating outer threshold
-//  
-//********************************************************************
+//
+// ********************************************************************
 package ch03.fractals;
 
 import javax.imageio.ImageIO;
@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class TSquareGray {
-  static final int SIDE = 1000;    // image is SIDE X SIDE
+  static final int SIDE = 1000; // image is SIDE X SIDE
   static final int WHITE = Color.WHITE.getRGB();
   static final int BLACK = Color.BLACK.getRGB();
   static BufferedImage image = new BufferedImage(SIDE, SIDE, BufferedImage.TYPE_INT_RGB);
@@ -25,10 +25,10 @@ public class TSquareGray {
   static int grayDecrement;
 
   private static void drawSquare(int x, int y, int s, int g)
-  // center of square is x,y  length of side is s, gray level is g
-  {
-    if (s <= inThreshold)  // base case
-      return;
+        // center of square is x,y  length of side is s, gray level is g
+      {
+    if (s <= inThreshold) // base case
+    return;
     else {
       // determine corners
       int left = x - s / 2;
@@ -63,7 +63,7 @@ public class TSquareGray {
 
     // calculate amount to decrement gray level
     int countLevels = 0; // number of drawn levels
-    int width = SIDE / 2;  // size of square at current level
+    int width = SIDE / 2; // size of square at current level
     while (width > inThreshold) {
       if (width < outThreshold) countLevels++;
       width = width / 2;

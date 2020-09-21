@@ -1,11 +1,11 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // WordFreqCounter.java         by Dale/Joyce/Weems                 Chapter 7
 //
 // Displays a word frequency list of the words listed in the input file.
 // Prompts user for minSize and minFreq.
 // Does not process words less than minSize in length.
 // Does not output words unless their frequency is at least minFreq.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch07.apps;
 
 import ch07.trees.BinarySearchTree;
@@ -38,7 +38,7 @@ public class WordFreqCounter {
     System.out.print("File name > ");
     fn = scan.next();
     Scanner wordsIn = new Scanner(new FileReader(fn));
-    wordsIn.useDelimiter("[^a-zA-Z']");  // delimiters are nonletters,'
+    wordsIn.useDelimiter("[^a-zA-Z']"); // delimiters are nonletters,'
 
     // Get word and frequency limits from user
     System.out.print("Minimum word size> ");
@@ -47,7 +47,7 @@ public class WordFreqCounter {
     minFreq = scan.nextInt();
 
     // Process file
-    while (wordsIn.hasNext())      // while more words to process
+    while (wordsIn.hasNext()) // while more words to process
     {
       word = wordsIn.next();
       numWords++;
@@ -61,7 +61,7 @@ public class WordFreqCounter {
           wordInTree.inc();
         } else {
           // insert new word into tree
-          wordToTry.inc();               // set frequency to 1
+          wordToTry.inc(); // set frequency to 1
           tree.add(wordToTry);
         }
       }
@@ -85,4 +85,4 @@ public class WordFreqCounter {
     System.out.println(numValidFreqs + " of these occur at least " + minFreq + " times.");
     System.out.println("Program completed.");
   }
-} 
+}

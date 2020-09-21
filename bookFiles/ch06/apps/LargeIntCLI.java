@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 // LargeIntCLI.java        by Dale/Joyce/Weems               Chapter 6
 //
 // Allows user to add or subtract large integers.
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 package ch06.apps;
 
 import ch06.largeInts.LargeInt;
@@ -17,7 +17,7 @@ public class LargeIntCLI {
     LargeInt second;
 
     String intString;
-    String more = null;    // used to stop or continue processing
+    String more = null; // used to stop or continue processing
 
     do {
       // Get large integers.
@@ -45,7 +45,6 @@ public class LargeIntCLI {
       System.out.print("Process another pair of numbers? (Y=Yes): ");
       more = scan.nextLine();
       System.out.println();
-    }
-    while (more.equalsIgnoreCase("y"));
+    } while (more.equalsIgnoreCase("y"));
   }
 }

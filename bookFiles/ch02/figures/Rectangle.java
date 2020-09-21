@@ -9,14 +9,14 @@ public class Rectangle implements FigureInterface {
   }
 
   public double perimeter()
-  // Returns perimeter of this figure.
-  {
+        // Returns perimeter of this figure.
+      {
     return (2 * (length + width));
   }
 
   public double area()
-  // Returns area of this figure.
-  {
+        // Returns area of this figure.
+      {
     return (length * width);
   }
 }

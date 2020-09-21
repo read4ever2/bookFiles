@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // WordFreqCounter.java         by Dale/Joyce/Weems                 Chapter 8
 //
 // Displays a word frequency list of the words listed in the input file.
@@ -6,7 +6,7 @@
 // Does not process words less than minSize in length.
 // Does not output words unless their frequency is at least minFreq.
 // Uses a map of String -> WordFreq.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch08.apps;
 
 import ch08.maps.ArrayListMap;
@@ -42,7 +42,7 @@ public class WordFreqCounter {
     System.out.print("File name > ");
     fn = scan.next();
     Scanner wordsIn = new Scanner(new FileReader(fn));
-    wordsIn.useDelimiter("[^a-zA-Z']");  // delimiters are nonletters,'
+    wordsIn.useDelimiter("[^a-zA-Z']"); // delimiters are nonletters,'
 
     // Get word and frequency limits from user
     System.out.print("Minimum word size> ");
@@ -51,7 +51,7 @@ public class WordFreqCounter {
     minFreq = scan.nextInt();
 
     // Process file
-    while (wordsIn.hasNext())      // while more words to process
+    while (wordsIn.hasNext()) // while more words to process
     {
       word = wordsIn.next();
       numWords++;
@@ -65,7 +65,7 @@ public class WordFreqCounter {
         } else {
           // insert new word into map
           wordToAdd = new WordFreq(word);
-          wordToAdd.inc();               // set frequency to 1
+          wordToAdd.inc(); // set frequency to 1
           words.put(word, wordToAdd);
         }
       }
@@ -89,4 +89,4 @@ public class WordFreqCounter {
     System.out.println(numValidFreqs + " of these occur at least " + minFreq + " times.");
     System.out.println("Program completed.");
   }
-} 
+}

@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // CardHandGUI.java         by Dale/Joyce/Weems               Chapter 6
 //
 // Allows user to organize a hand of playing cards.
 // Uses a graphical user innterface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch06.apps;
 
 import support.cards.Card;
@@ -69,21 +69,17 @@ public class CardHandGUI {
     northPanel.add(nextCardHolder);
     northPanel.add(slotPanel);
 
-
     // south panel
-    for (int i = 0; i < HANDSIZE; i++)
-      slotLabels[i] = new JLabel(Integer.toString(i));
+    for (int i = 0; i < HANDSIZE; i++) slotLabels[i] = new JLabel(Integer.toString(i));
 
-    for (int i = 2; i < HANDSIZE; i++)
-      slotLabels[i].setVisible(false);
+    for (int i = 2; i < HANDSIZE; i++) slotLabels[i].setVisible(false);
 
     JPanel southPanel = new JPanel();
     southPanel.setBackground(Color.white);
     southPanel.setLayout(new FlowLayout());
 
     cardLabels[0] = new JLabel(hand[0].getImage());
-    for (int i = 1; i < HANDSIZE; i++)
-      cardLabels[i] = new JLabel("");
+    for (int i = 1; i < HANDSIZE; i++) cardLabels[i] = new JLabel("");
 
     for (int i = 0; i < HANDSIZE; i++) {
       southPanel.add(slotLabels[i]);
@@ -103,16 +99,12 @@ public class CardHandGUI {
       handCount++;
 
       int target = 0;
-      for (int i = 0; i < HANDSIZE; i++)
-        if (source == rbuttons[i])
-          target = i;
+      for (int i = 0; i < HANDSIZE; i++) if (source == rbuttons[i]) target = i;
 
-      for (int i = handCount - 1; i > target; i--)
-        hand[i] = hand[i - 1];
+      for (int i = handCount - 1; i > target; i--) hand[i] = hand[i - 1];
       hand[target] = nextCard;
 
-      for (int i = 0; i < handCount; i++)
-        cardLabels[i].setIcon(hand[i].getImage());
+      for (int i = 0; i < handCount; i++) cardLabels[i].setIcon(hand[i].getImage());
 
       if (handCount != HANDSIZE) {
         slotLabels[handCount].setVisible(true);
@@ -132,53 +124,3 @@ public class CardHandGUI {
     }
   }
 }
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -19,5 +19,3 @@ public class Kids {
     System.out.println("Number of children is " + numChildren);
   }
 }
-
-

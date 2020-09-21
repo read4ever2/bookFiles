@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // PFixGUI.java            by Dale/Joyce/Weems                 Chapter 2
 //
 // Evaluates postfix expressions entered by the user.
 // Uses a graphical user interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch02.apps;
 
 import ch02.postfix.PostFixEvaluator;
@@ -18,10 +18,10 @@ import java.io.IOException;
 
 public class PFixGUI {
   // text field
-  private static JTextField expressionText;  // text field for postfix expression
+  private static JTextField expressionText; // text field for postfix expression
 
   // status Label
-  private static JLabel statusLabel;         // label for status/result info
+  private static JLabel statusLabel; // label for status/result info
 
   public static void main(String[] args) throws IOException {
     // Declare/instantiate/initialize display frame.
@@ -74,8 +74,8 @@ public class PFixGUI {
   // Define a button listener.
   private static class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent event)
-    // listener for the button events
-    {
+          // listener for the button events
+        {
       if (event.getActionCommand().equals("Evaluate")) { // Handles Evaluate event.
         int result = 0;
         String errMessage = null;

@@ -8,14 +8,14 @@ public class Circle implements FigureInterface {
   }
 
   public double perimeter()
-  // Returns perimeter of this figure.
-  {
+        // Returns perimeter of this figure.
+      {
     return (2 * PI * radius);
   }
 
   public double area()
-  // Returns area of this figure.
-  {
+        // Returns area of this figure.
+      {
     return (PI * radius * radius);
   }
 }

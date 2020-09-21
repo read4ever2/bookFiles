@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // DequeInterface.java           by Dale/Joyce/Weems                 Chapter 4
 //
 // Interface for a class that implements a deque of T.
 // A deque is a linear structure allowing insertion/removal at both ends.
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 package ch04.queues;
 
@@ -33,7 +33,3 @@ public interface DequeInterface<T> {
   int size();
   // Returns the number of elements in this queue.
 }
-
-
-
-

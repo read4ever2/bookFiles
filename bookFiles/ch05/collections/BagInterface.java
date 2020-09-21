@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // BagInterface.java            by Dale/Joyce/Weems                  Chapter 5
 //
 // Interface for a class that implements a bag of T.
 // A bag is a collection that supports a few extra operations.
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 package ch05.collections;
 
@@ -22,7 +22,3 @@ public interface BagInterface<T> extends CollectionInterface {
   void clear();
   // Empties this bag so that it contains zero elements.
 }
-
-
-
-

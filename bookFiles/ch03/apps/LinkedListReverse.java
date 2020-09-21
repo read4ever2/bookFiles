@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // LinkedListReverse.java         by Dale/Joyce/Weems                Chapter 3
 //
 // Demonstrates both iterative and recursive reverse print of linked lists.
 // Tests the code developed for Section 3.7: Removing Recursion
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 package ch03.apps;
 
 import ch02.stacks.LinkedStack;
@@ -12,9 +12,9 @@ import support.LLNode;
 
 public class LinkedListReverse {
   static void recRevPrintList(LLNode<String> listRef)
-  // Prints the contents of the listRef linked list to standard output
-  // in reverse order
-  {
+        // Prints the contents of the listRef linked list to standard output
+        // in reverse order
+      {
     if (listRef != null) {
       recRevPrintList(listRef.getLink());
       System.out.println(listRef.getInfo());
@@ -22,9 +22,9 @@ public class LinkedListReverse {
   }
 
   static void iterRevPrintList(LLNode<String> listRef)
-  // Prints the contents of the listRef linked list to standard output
-  // in reverse order
-  {
+        // Prints the contents of the listRef linked list to standard output
+        // in reverse order
+      {
     StackInterface<String> stack = new LinkedStack<String>();
 
     while (listRef != null) // put info onto the stack

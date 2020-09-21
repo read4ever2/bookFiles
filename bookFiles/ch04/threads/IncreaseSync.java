@@ -10,7 +10,6 @@ public class IncreaseSync implements Runnable {
   }
 
   public void run() {
-    for (int i = 1; i <= amount; i++)
-      c.increment();
+    for (int i = 1; i <= amount; i++) c.increment();
   }
 }

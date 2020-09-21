@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 // SimulationCLI.java       by Dale/Joyce/Weems               Chapter 4
 //
 // Simulates customers waiting in queues. Customers always enter
@@ -14,7 +14,7 @@
 //    The average waiting time for a customer.
 //
 // Uses a command line interface.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 package ch04.apps;
 
 import ch04.simulation.Simulation;
@@ -25,15 +25,15 @@ public class SimulationCLI {
   public static void main(String[] args) {
     Scanner conIn = new Scanner(System.in);
 
-    int minIAT;    // minimum interarrival time
-    int maxIAT;    // maximum interarrival time
-    int minST;     // minimum service time
-    int maxST;     // maximum service time
+    int minIAT; // minimum interarrival time
+    int maxIAT; // maximum interarrival time
+    int minST; // minimum service time
+    int maxST; // maximum service time
     int numQueues; // number of queues
-    int numCust;   // number of customers
+    int numCust; // number of customers
 
-    String skip;           // skip end of line after reading an integer
-    String more = null;    // used to stop or continue processing
+    String skip; // skip end of line after reading an integer
+    String more = null; // used to stop or continue processing
 
     // Get customer information
     System.out.print("Enter minimum interarrival time: ");
@@ -55,7 +55,7 @@ public class SimulationCLI {
       numQueues = conIn.nextInt();
       System.out.print("Enter number of customers: ");
       numCust = conIn.nextInt();
-      skip = conIn.nextLine();   // skip end of line
+      skip = conIn.nextLine(); // skip end of line
 
       // run simulation and output average waiting time
       sim.simulate(numQueues, numCust);
@@ -65,8 +65,7 @@ public class SimulationCLI {
       System.out.println();
       System.out.print("Evaluate another simulation instance? (Y=Yes): ");
       more = conIn.nextLine();
-    }
-    while (more.equalsIgnoreCase("y"));
+    } while (more.equalsIgnoreCase("y"));
 
     System.out.println("Program completed.");
   }

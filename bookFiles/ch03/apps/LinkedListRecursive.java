@@ -1,19 +1,19 @@
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // LinkedListRecursive.java        by Dale/Joyce/Weems               Chapter 3
 //
 // Demonstrates both iterative and recursive traversals of linked lists.
 // Demonstrates both iterative and recursive element count of linked lists.
 // Demonstrates recursively adding an element to the end of a linked list.
 // Tests the code developed for Section 3.4: Linked List Processing
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 package ch03.apps;
 
 import support.LLNode;
 
 public class LinkedListRecursive {
   static void recPrintList(LLNode<String> listRef)
-  // Prints the contents of the listRef linked list to standard output
-  {
+        // Prints the contents of the listRef linked list to standard output
+      {
     if (listRef != null) {
       System.out.println(listRef.getInfo());
       recPrintList(listRef.getLink());
@@ -21,8 +21,8 @@ public class LinkedListRecursive {
   }
 
   static void iterPrintList(LLNode<String> listRef)
-  // Prints the contents of the listRef linked list to standard output
-  {
+        // Prints the contents of the listRef linked list to standard output
+      {
     while (listRef != null) {
       System.out.println(listRef.getInfo());
       listRef = listRef.getLink();
@@ -30,17 +30,15 @@ public class LinkedListRecursive {
   }
 
   static int recListSize(LLNode<String> listRef)
-  // Returns the size of the listRef linked list
-  {
-    if (listRef == null)
-      return 0;
-    else
-      return 1 + recListSize(listRef.getLink());
+        // Returns the size of the listRef linked list
+      {
+    if (listRef == null) return 0;
+    else return 1 + recListSize(listRef.getLink());
   }
 
   static int iterListSize(LLNode<String> listRef)
-  // Returns the size of the listRef linked list
-  {
+        // Returns the size of the listRef linked list
+      {
     int size = 0;
     while (listRef != null) {
       size = size + 1;
@@ -50,12 +48,10 @@ public class LinkedListRecursive {
   }
 
   static LLNode<String> recInsertEnd(String newInfo, LLNode<String> listRef)
-  // Adds newInfo to the end of the listRef linked list
-  {
-    if (listRef != null)
-      listRef.setLink(recInsertEnd(newInfo, listRef.getLink()));
-    else
-      listRef = new LLNode<String>(newInfo);
+        // Adds newInfo to the end of the listRef linked list
+      {
+    if (listRef != null) listRef.setLink(recInsertEnd(newInfo, listRef.getLink()));
+    else listRef = new LLNode<String>(newInfo);
     return listRef;
   }
 

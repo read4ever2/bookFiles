@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 // DaysBetween.java          by Dale/Joyce/Weems               Chapter 1
 //
-// Asks the user to enter two "modern" dates and then reports 
+// Asks the user to enter two "modern" dates and then reports
 // the number of days between the two dates.
-//----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 package ch01.apps;
 

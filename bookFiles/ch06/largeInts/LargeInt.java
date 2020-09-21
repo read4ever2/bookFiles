@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // LargeInt.java            by Dale/Joyce/Weems                     Chapter 6
-// 
+//
 // Provides a Large Integer ADT. Large integers can consist of any number
 // of digits, plus a sign. Supports an add and a subtract operation.
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 package ch06.largeInts;
 
 import java.util.Iterator;
@@ -12,26 +12,26 @@ public class LargeInt {
   // Constants for sign variable
   protected static final boolean PLUS = true;
   protected static final boolean MINUS = false;
-  protected LargeIntList numbers;    // Holds digits
+  protected LargeIntList numbers; // Holds digits
   protected boolean sign;
 
   public LargeInt()
-  // Instantiates an "empty" large integer.
-  {
+        // Instantiates an "empty" large integer.
+      {
     numbers = new LargeIntList();
     sign = PLUS;
   }
 
   public LargeInt(String intString)
-  // Precondition: intString contains a well-formatted integer
-  //
-  // Instantiates a large integer as indicated by intString
-  {
+        // Precondition: intString contains a well-formatted integer
+        //
+        // Instantiates a large integer as indicated by intString
+      {
     numbers = new LargeIntList();
     sign = PLUS;
 
-    int firstDigitPosition;          // Position of first digit in intString
-    int lastDigitPosition;           // Position of last digit in intString
+    int firstDigitPosition; // Position of first digit in intString
+    int lastDigitPosition; // Position of last digit in intString
 
     // Used to translate character to byte
     char digitChar;
@@ -39,9 +39,9 @@ public class LargeInt {
     byte digitByte;
 
     firstDigitPosition = 0;
-    if (intString.charAt(0) == '+')   //  Skip leading plus sign
-      firstDigitPosition = 1;
-    else if (intString.charAt(0) == '-')   // Handle leading minus sign
+    if (intString.charAt(0) == '+') //  Skip leading plus sign
+    firstDigitPosition = 1;
+    else if (intString.charAt(0) == '-') // Handle leading minus sign
     {
       firstDigitPosition = 1;
       sign = MINUS;
@@ -57,19 +57,16 @@ public class LargeInt {
     }
   }
 
-  protected static boolean greaterList(LargeIntList first,
-                                       LargeIntList second)
-  // Precondition: first and second have no leading zeros
-  //
-  // Returns true if first represents a larger number than second;
-  // otherwise, returns false
+  protected static boolean greaterList(LargeIntList first, LargeIntList second)
+        // Precondition: first and second have no leading zeros
+        //
+        // Returns true if first represents a larger number than second;
+        // otherwise, returns false
 
-  {
+      {
     boolean greater = false;
-    if (first.size() > second.size())
-      greater = true;
-    else if (first.size() < second.size())
-      greater = false;
+    if (first.size() > second.size()) greater = true;
+    else if (first.size() < second.size()) greater = false;
     else {
       byte digitFirst;
       byte digitSecond;
@@ -97,13 +94,12 @@ public class LargeInt {
     return greater;
   }
 
-  protected static LargeIntList addLists(LargeIntList larger,
-                                         LargeIntList smaller)
-  // Precondition: larger > smaller
-  //
-  // Returns a specialized list that is a byte-by-byte sum of the two
-  // argument lists
-  {
+  protected static LargeIntList addLists(LargeIntList larger, LargeIntList smaller)
+        // Precondition: larger > smaller
+        //
+        // Returns a specialized list that is a byte-by-byte sum of the two
+        // argument lists
+      {
     byte digit1;
     byte digit2;
     byte temp;
@@ -134,18 +130,16 @@ public class LargeInt {
       carry = (byte) (temp / 10);
       result.addFront((byte) (temp % 10));
     }
-    if (carry != 0)
-      result.addFront(carry);
+    if (carry != 0) result.addFront(carry);
 
     return result;
   }
 
-  protected static LargeIntList subtractLists(LargeIntList larger,
-                                              LargeIntList smaller)
-  // Precondition: larger >= smaller
-  //
-  // Returns a specialized list that is the difference of the two argument lists
-  {
+  protected static LargeIntList subtractLists(LargeIntList larger, LargeIntList smaller)
+        // Precondition: larger >= smaller
+        //
+        // Returns a specialized list that is the difference of the two argument lists
+      {
     byte digit1;
     byte digit2;
     byte temp;
@@ -175,8 +169,7 @@ public class LargeInt {
 
       digit2 = smallerReverse.next();
 
-      if (digit2 <= digit1)
-        result.addFront((byte) (digit1 - digit2));
+      if (digit2 <= digit1) result.addFront((byte) (digit1 - digit2));
       else {
         borrow = true;
         result.addFront((byte) (digit1 + 10 - digit2));
@@ -203,17 +196,16 @@ public class LargeInt {
   }
 
   public static LargeInt add(LargeInt first, LargeInt second)
-  // Returns a LargeInt that is the sum of the two argument LargeInts
-  {
+        // Returns a LargeInt that is the sum of the two argument LargeInts
+      {
     LargeInt sum = new LargeInt();
 
     if (first.sign == second.sign) {
       if (greaterList(first.numbers, second.numbers))
         sum.numbers = addLists(first.numbers, second.numbers);
-      else
-        sum.numbers = addLists(second.numbers, first.numbers);
+      else sum.numbers = addLists(second.numbers, first.numbers);
       sum.sign = first.sign;
-    } else   // Signs are different
+    } else // Signs are different
     {
       if (greaterList(first.numbers, second.numbers)) {
         sum.numbers = subtractLists(first.numbers, second.numbers);
@@ -228,8 +220,8 @@ public class LargeInt {
   }
 
   public static LargeInt subtract(LargeInt first, LargeInt second)
-  // Returns a LargeInt that is the difference of the two argument LargeInts
-  {
+        // Returns a LargeInt that is the difference of the two argument LargeInts
+      {
     LargeInt diff = new LargeInt();
 
     // Create an inverse of second
@@ -237,8 +229,7 @@ public class LargeInt {
     negSecond.sign = !second.sign;
     Iterator<Byte> secondForward = second.numbers.forward();
     int length = second.numbers.size();
-    for (int count = 1; count <= length; count++)
-      negSecond.numbers.addEnd(secondForward.next());
+    for (int count = 1; count <= length; count++) negSecond.numbers.addEnd(secondForward.next());
 
     // Add first to inverse of second
     diff = add(first, negSecond);
@@ -254,18 +245,15 @@ public class LargeInt {
     Byte element;
 
     String largeIntString;
-    if (sign == PLUS)
-      largeIntString = "+";
-    else
-      largeIntString = "-";
+    if (sign == PLUS) largeIntString = "+";
+    else largeIntString = "-";
 
     int count = numbers.size();
     Iterator<Byte> forward = numbers.forward();
     while (forward.hasNext()) {
       element = forward.next();
       largeIntString = largeIntString + element;
-      if ((((count - 1) % 3) == 0) && (count != 1))
-        largeIntString = largeIntString + ",";
+      if ((((count - 1) % 3) == 0) && (count != 1)) largeIntString = largeIntString + ",";
       count--;
     }
     return (largeIntString);
