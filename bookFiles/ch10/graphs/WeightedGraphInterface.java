@@ -12,16 +12,15 @@
 
 package ch10.graphs;
 
-import ch04.queues.*;
+import ch04.queues.QueueInterface;
 
-public interface WeightedGraphInterface<T>
-{
+public interface WeightedGraphInterface<T> {
   boolean isEmpty();
   // Returns true if this graph is empty; otherwise, returns false.
 
   boolean isFull();
   // Returns true if this graph is full; otherwise, returns false.
-  
+
   void addVertex(T vertex);
   // Preconditions:   This graph is not full.
   //                  vertex is not already in this graph.
@@ -37,7 +36,7 @@ public interface WeightedGraphInterface<T>
 
   int weightIs(T fromVertex, T toVertex);
   // If edge from fromVertex to toVertex exists, returns the weight of edge;
-  // otherwise, returns a special “null-edge” value.
+  // otherwise, returns a special ï¿½null-edgeï¿½ value.
 
   QueueInterface<T> getToVertices(T vertex);
   // Returns a queue of the vertices that vertex is adjacent to.
@@ -50,7 +49,7 @@ public interface WeightedGraphInterface<T>
 
   boolean isMarked(T vertex);
   // Returns true if vertex is marked; otherwise, returns false.
-  
+
   T getUnmarked();
   // Returns an unmarked vertex if any exist; otherwise, returns null.
 }
